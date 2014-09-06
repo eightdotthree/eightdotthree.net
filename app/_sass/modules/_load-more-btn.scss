@@ -1,0 +1,27 @@
+$load-more-btn-color: $white;
+
+.load-more-btn {
+
+	@include single-transition(all, .5s, ease-in-out);
+
+	font-family: $sans-serif;
+	font-size: 1em;
+	text-align: center;
+	color: $load-more-btn-color;
+
+	cursor: pointer;
+
+	display: block;
+	padding: 2em;
+	clear: both;
+
+	&:hover {
+
+		background: #ec2327;
+		text-decoration: none;
+		color: $load-more-btn-color;
+		padding: 2.5em;
+
+	}
+
+}

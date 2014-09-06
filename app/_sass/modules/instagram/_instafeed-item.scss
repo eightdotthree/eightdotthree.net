@@ -1,0 +1,22 @@
+.instafeed-item {
+
+	line-height: 0;
+
+	@include make-xs-column(12, 0);
+
+	/* Small devices (tablets, 768px and up) */
+	@include bootstrap_mq (sm) {
+		@include make-sm-column(6, 0);
+	}
+
+	/* Medium devices (desktops, 992px and up) */
+	@include bootstrap_mq (md) {
+		@include make-md-column(4, 0);
+	}
+
+	/* Large devices (large desktops, 1200px and up) */
+	@include bootstrap_mq (lg) {
+		@include make-lg-column (3, 0);
+	}
+
+}
