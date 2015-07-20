@@ -9,8 +9,16 @@ layout: default.hbs
 
 <section>
 
-	<div id="instafeed">
-	</div>
+	<ul>
+		<li ng-repeat="p in pics | orderBy: orderBy">
+			<a href="{{p.link}}" target="_blank">
+				<img ng-src="{{p.images.low_resolution.url}}" class="img-responsive thumbnail" title="{{p.caption.text}}">
+			</a>
+			<span>
+				{{p.likes.count}}
+			</span>
+		</li>
+	</ul>
 
 </section>
 

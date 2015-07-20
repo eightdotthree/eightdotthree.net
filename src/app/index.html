@@ -23,7 +23,7 @@
 <!-- endbuild -->
 </head>
 
-<body>
+<body data-ng-app="eightdotthreeApp">
 
 	
 
@@ -33,12 +33,13 @@
 
 </header>
 
-	<section class="container-fluid">
+	<section class="container-fluid" data-ng-controller="instagramController">
 
 		
 
 
 
+<!--
 <section class="intro-content content">
 
 	<h2>what does depression look like?</h2>
@@ -48,11 +49,20 @@
 	<p>My Instagram account is probably the best representation of my bout with depression as it shows me in what looks to be good spirits and having a great time. What it doesn't show is what I was really feeling. Wanting to burn it all to the ground. Wanting to drive into oncoming traffic or</p>
 
 </section>
+-->
 
 <section>
 
-	<div id="instafeed">
-	</div>
+	<ul>
+		<li ng-repeat="p in pics | orderBy: orderBy">
+			<a href="" target="_blank">
+				<img ng-src="" class="img-responsive thumbnail" title="">
+			</a>
+			<span>
+				
+			</span>
+		</li>
+	</ul>
 
 </section>
 
@@ -67,13 +77,10 @@
 	
 
 
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-
-<!-- build:js(app) js/main.js -->
-<script src="bower_components/instafeed.js/instafeed.min.js"></script>
-<script src="bower_components/unveil/jquery.unveil.min.js"></script>
-<script src="js/eightdotthree.settings.js"></script>
-<script src="js/eightdotthree.app.js"></script>
+	<!-- build:js(app) js/main.js -->
+<script src="bower_components/angular/angular.js"></script>
+<script src="js/controllers/eightdotthree.app.js"></script>
+<script src="js/controllers/eightdotthree.instagram.js"></script>
 <!-- endbuild -->
 
 </body>

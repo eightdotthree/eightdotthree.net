@@ -17,11 +17,11 @@
 	{{> _js-modernizr }}
 </head>
 
-<body>
+<body data-ng-app="eightdotthreeApp">
 
 	{{> _site-header }}
 
-	<section class="container-fluid">
+	<section class="container-fluid" data-ng-controller="instagramController">
 
 		{{ body }}
 
