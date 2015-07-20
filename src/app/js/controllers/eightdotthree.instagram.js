@@ -49,24 +49,24 @@ eightdotthreeApp.controller("instagramController", function($scope, $interval, I
     $scope.have = [];
     $scope.orderBy = "-likes.count";
 
-	$scope.getMore = function() {
+	$scope.getImages = function() {
 
         Instagram.popular(function(data) {
+
             for (var i = 0; i < data.length; i++) {
+
+            	console.log(data[i].images.low_resolution.url);
+
                 if (typeof $scope.have[data[i].id] === 'undefined') {
                     $scope.pics.push(data[i]);
                     $scope.have[data[i].id] = '1';
                 }
-            }
-        });
 
-        console.log($scope.pics);
+            }
+
+        });
     };
 
-    $scope.getMore();
-
-    $scope.tags = [
-        'Bootstrap', 'AngularJS', 'Instagram', 'Factory'
-    ]
+    $scope.getImages();
 
 });

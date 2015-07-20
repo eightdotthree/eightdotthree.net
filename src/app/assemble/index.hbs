@@ -10,9 +10,9 @@ layout: default.hbs
 <section>
 
 	<ul>
-		<li ng-repeat="p in pics | orderBy: orderBy">
+		<li data-ng-repeat="p in pics | orderBy: orderBy">
 			<a href="{{p.link}}" target="_blank">
-				<img ng-src="{{p.images.low_resolution.url}}" class="img-responsive thumbnail" title="{{p.caption.text}}">
+				<img data-ng-src="{{p.images.low_resolution.url}}" class="img-responsive thumbnail" title="{{p.caption.text}}">
 			</a>
 			<span>
 				{{p.likes.count}}
