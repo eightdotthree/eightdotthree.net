@@ -1,0 +1,8 @@
+var eightdotthree = eightdotthree || {};
+
+eightdotthree.settings = {
+	INSTAGRAM_CLIENT_ID: '7d57478209ba4ed39e20d5be80935ffd',
+	INSTAGRAM_CLIENT_SECRET: 'a60c3978c38e4bfe93e91f196e009a2e',
+	INSTAGRAM_ACCESS_TOKEN: '12020150.7d57478.0b5e104ac20b44399e19fbe993deb51c',
+	INSTAGRAM_USER_ID: 12020150
+}
