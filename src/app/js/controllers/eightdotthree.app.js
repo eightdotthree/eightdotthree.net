@@ -1,1 +1,0 @@
-var eightdotthreeApp = angular.module('eightdotthreeApp', []);

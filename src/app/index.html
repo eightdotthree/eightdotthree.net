@@ -1,85 +1,65 @@
 <!doctype html>
 <html class="no-js" data-ng-app="eightdotthreeApp">
-<head>
-	<meta charset="utf-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<head>
 
-	<title>
-		8.3
-	</title>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
-	<link href="//fonts.googleapis.com/css?family=Roboto:400,500,700,300,400italic" rel="stylesheet" type="text/css" />
+		<title>8.3</title>
 
-	<!-- build:css css/main.css -->
-<link rel="stylesheet" href="css/main.css" />
-<!-- endbuild -->
+		<link href="//fonts.googleapis.com/css?family=Roboto:400,500,700,300,400italic" rel="stylesheet" type="text/css" />
 
-	<!-- build:js js/plugins/modernizr.js -->
-<script src="bower_components/modernizr/modernizr.js"></script>
-<!-- endbuild -->
-</head>
+		<!-- build:css css/main.css -->
+		<link rel="stylesheet" href="css/main.css" />
+		<!-- endbuild -->
 
-<body>
+		<!-- build:js js/plugins/modernizr.js -->
+		<script src="bower_components/modernizr/modernizr.js"></script>
+		<!-- endbuild -->
+	</head>
 
-	
+	<body>
 
-<header class="site-header">
+		<header class="site-header">
+			<h1>8.3</h1>
+		</header>
 
-	<h1>8.3</h1>
+		<section class="container-fluid" data-ng-controller="EightdotthreeController">
 
-</header>
+			<ul>
+				<li data-ng-repeat="p in photos">
+					<a href="{{ p.link }}" target="_blank" class="photo-item photo-item-link">
+						<div class="photo-item-details">
+							<h2 data-ng-html="{{ p.caption.text }}"></h2>
+							<p>
+								<span data-ng-bind="{{ p.likes.count }}"></span> likes,
+								<span data-ng-bind="{{ p.comments.count }}"></span> comments,
+								<span data-ng-bind="{{ p.filter }}"></span>
+							</p>
+						</div>
+						<img data-ng-src="{{ p.images.standard_resolution.url }}" title="{{ p.caption.text }}" class="photo-item-img" />
+					</a>
+				</li>
+			</ul>
 
-	<section class="container-fluid" data-ng-controller="instagramController">
+			<!--
+			<div>
+				<a id="js-load-more-btn" class="load-more-btn" data-ng-click="getImages()">
+					Load More
+				</a>
+			</div>
+			-->
 
-		
+		</section>
 
+		<!-- build:js(app) js/main.js -->
+		<script src="bower_components/angular/angular.js"></script>
+		<script src="js/eightdotthree.app.js"></script>
+		<script src="js/eightdotthree.controller.js"></script>
+		<script src="js/eightdotthree.filters.js"></script>
+		<script src="js/instagram/instagram.services.js"></script>
+		<!-- endbuild -->
 
-
-<!--
-<section class="intro-content content">
-
-	<h2>what does depression look like?</h2>
-
-	<p>Inspired by the lamest of sources, <a href="http://www.buzzfeed.com/laurasilver/this-is-what-depression-really-looks-like#.ksdQzrm7N" title="This Is What Depression Really Looks Like">Buzzfeed</a>, I decided to share my experience with depression and axiety. I have a pretty great life. A good career, an amazing wife, no money issues to speak of, I travel, and have hobbies that I enjoy. What could I possibly feel depressed about?</p>
-
-	<p>My Instagram account is probably the best representation of my bout with depression as it shows me in what looks to be good spirits and having a great time. What it doesn't show is what I was really feeling. Wanting to burn it all to the ground. Wanting to drive into oncoming traffic or</p>
-
-</section>
--->
-
-<section>
-
-	<ul>
-		<li data-ng-repeat="p in pics | orderBy: orderBy">
-			<a href="" target="_blank">
-				<img data-ng-src="" class="img-responsive thumbnail" title="">
-			</a>
-			<span>
-				
-			</span>
-		</li>
-	</ul>
-
-</section>
-
-<div>
-	<a id="js-load-more-btn" class="load-more-btn" href="//www.instagram.com/8dot3">
-		Load More
-	</a>
-</div>
-
-	</section>
-
-	
-
-
-	<!-- build:js(app) js/main.js -->
-<script src="bower_components/angular/angular.js"></script>
-<script src="js/controllers/eightdotthree.app.js"></script>
-<script src="js/controllers/eightdotthree.instagram.js"></script>
-<!-- endbuild -->
-
-</body>
-
+	</body>
 </html>
