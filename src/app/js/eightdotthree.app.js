@@ -8,3 +8,10 @@ var eightdotthreeApp = angular.module('eightdotthreeApp', []);
 	//     $interpolateProvider.endSymbol('}]}');
 
 	// });
+
+/**
+ * todo
+ *	- add more photos button
+ *	- add details on photo click
+ *	- add lazy loading
+ */
