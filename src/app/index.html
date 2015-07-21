@@ -19,13 +19,15 @@
 		<!-- endbuild -->
 	</head>
 
-	<body>
+	<body data-ng-controller="EightdotthreeController">
 
 		<header class="site-header">
 			<h1>8.3</h1>
 		</header>
 
-		<section class="container-fluid" data-ng-controller="EightdotthreeController">
+		<section class="container-fluid">
+
+			<img data-ng-hide="loaded" class="loading-spinner" src="/img/loadingSpinner.gif" width="32" height="32" alt="Loading..." />
 
 			<ul>
 				<li data-ng-repeat="p in photos">
@@ -38,7 +40,7 @@
 								<span data-ng-bind="{{ p.filter }}"></span>
 							</p>
 						</div>
-						<img data-ng-src="{{ p.images.standard_resolution.url }}" title="{{ p.caption.text }}" class="photo-item-img" />
+						<img src="img/unveilPlaceholder.gif" data-unveil-src="{{ p.images.standard_resolution.url }}" title="{{ p.caption.text }}" class="photo-item-img unveil" width="640" height="640" />
 					</a>
 				</li>
 			</ul>
@@ -54,9 +56,12 @@
 		</section>
 
 		<!-- build:js(app) js/main.js -->
+		<script src="bower_components/jquery/dist/jquery.js"></script>
+		<script src="bower_components/unveil/jquery.unveil.js"></script>
 		<script src="bower_components/angular/angular.js"></script>
 		<script src="js/eightdotthree.app.js"></script>
 		<script src="js/eightdotthree.controller.js"></script>
+		<script src="js/eightdotthree.directives.js"></script>
 		<script src="js/eightdotthree.filters.js"></script>
 		<script src="js/instagram/instagram.services.js"></script>
 		<!-- endbuild -->

@@ -13,5 +13,4 @@ var eightdotthreeApp = angular.module('eightdotthreeApp', []);
  * todo
  *	- add more photos button
  *	- add details on photo click
- *	- add lazy loading
  */

@@ -18,8 +18,10 @@
 		 * Builds the Instagram API endpoint
 		 */
 		function buildEndpoint(func) {
+
 			var endpoint = SETTINGS.API_URL + func + '?client_id=' + SETTINGS.CLIENT_ID + '&count=' + SETTINGS.COUNT +'&callback=JSON_CALLBACK';
 			return endpoint;
+
 		};
 
 		function get(func, callback) {
@@ -27,16 +29,13 @@
 			var endpoint;
 
 			switch (func) {
-
 				case '/users/media/recent/' : {
 					endpoint = buildEndpoint('/users/' + SETTINGS.USER_ID + '/media/recent/');
 					break;
 				}
-
 				default : {
 					endpoint = buildEndpoint('/media/popular/');
 				}
-
 			}
 
 			$http.jsonp(endpoint).success(function(response) {
