@@ -4,6 +4,11 @@
 var options = {
     config : {
         src: 'grunt-config/*.js'
+    },
+    yeoman: {
+        app: 'app',
+        dist: 'dist',
+        deploy: '../deploy'
     }
 };
 
@@ -26,28 +31,20 @@ module.exports = function (grunt) {
     require('time-grunt')(grunt);
 
     // Assemble!
-    grunt.loadNpmTasks('assemble');
+    //grunt.loadNpmTasks('assemble');
 
     // For executing the updateScss.js script in app/assemble/helpers
     grunt.loadNpmTasks('grunt-execute');
 
     grunt.initConfig(configs);
 
-    // configurable paths
-    var yeomanConfig = {
-        app: 'app',
-        dist: 'dist',
-        deploy: '../../deploy'
-    };
-
     grunt.registerTask('server', function (target) {
         if (target === 'dist') {
             return grunt.task.run(['build', 'open', 'connect:dist:keepalive']);
         }
-
         grunt.task.run([
-            'clean:assemble',
-            'assemble',
+            // 'clean:assemble',
+            // 'assemble',
             'clean:server',
             'concurrent:server',
             'autoprefixer',
@@ -62,17 +59,22 @@ module.exports = function (grunt) {
     ]);
 
     grunt.registerTask('build', [
-        'clean:dist',
-        'useminPrepare',
-        'concurrent:dist',
-        'autoprefixer',
-        'concat',
-        'cssmin',
-        'uglify',
-        'copy:dist',
-        'usemin',
-        'modernizr:dist'
+        'copy', 'useminPrepare', 'concat', 'uglify', 'cssmin', 'rev', 'usemin'
     ]);
+
+
+    // grunt.registerTask('build', [
+    //     'clean:dist',
+    //     'useminPrepare',
+    //     'concurrent:dist',
+    //     'autoprefixer',
+    //     'concat',
+    //     'cssmin',
+    //     'uglify',
+    //     'copy:dist',
+    //     'usemin',
+    //     'modernizr:dist'
+    // ]);
 
     grunt.registerTask('deploy', [
         'clean:deploy',
@@ -80,8 +82,8 @@ module.exports = function (grunt) {
     ]);
 
     grunt.registerTask('default', [
-        'clean:assemble',
-        'assemble',
+        // 'clean:assemble',
+        // 'assemble',
         'jshint',
         'build'
     ]);

@@ -1,0 +1,18 @@
+.loading-spinner {
+
+	transition-property: opacity;
+	transition-duration: 0.5s;
+
+	text-align: center;
+	opacity: 0;
+
+	margin: 1em 0;
+
+	display: none;
+
+	&.is-loading {
+		padding: 2em;
+		opacity: 1;
+		display: block;
+	}
+}

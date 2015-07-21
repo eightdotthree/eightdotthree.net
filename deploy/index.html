@@ -1,0 +1,55 @@
+<!doctype html>
+<html class="no-js" data-ng-app="eightdotthreeApp">
+	<head>
+
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+
+		<title>8.3</title>
+
+		<link href="//fonts.googleapis.com/css?family=Roboto:400,500,700,300,400italic" rel="stylesheet" type="text/css">
+
+		<link rel="stylesheet" href="css/8ac2b847.main.css">
+
+		<script src="js/plugins/339920c3.modernizr.js"></script>
+	</head>
+
+	<body data-ng-controller="EightdotthreeController as cont">
+
+		<header class="site-header">
+			<h1>8.3</h1>
+		</header>
+
+		<section class="container-fluid">
+
+			<ul class="clearfix">
+				<li data-ng-repeat="p in photos">
+					<a href="{{ p.link }}" target="_blank" class="photo-item photo-item-link">
+						<div class="photo-item-details">
+							<h2 data-ng-html="{{ p.caption.text }}"></h2>
+							<p>
+								<span data-ng-bind="{{ p.likes.count }}"></span> likes,
+								<span data-ng-bind="{{ p.comments.count }}"></span> comments,
+								<span data-ng-bind="{{ p.filter }}"></span>
+							</p>
+						</div>
+						<img src="img/unveilPlaceholder.gif" data-unveil-src="{{ p.images.standard_resolution.url }}" title="{{ p.caption.text }}" class="photo-item-img unveil" width="640" height="640">
+					</a>
+				</li>
+			</ul>
+
+			<div class="loading-spinner">
+				<img src="/img/loadingSpinner.gif" width="32" height="32" alt="Loading...">
+			</div>
+
+			<a class="load-more-btn">
+				Load More
+			</a>
+
+		</section>
+
+		<script src="js/9481c817.main.js"></script>
+
+	</body>
+</html>

@@ -2,9 +2,13 @@ $load-more-btn-color: $white;
 
 .load-more-btn {
 
-	@include single-transition(all, .5s, ease-in-out);
+	//@include single-transition(all, .5s, ease-in-out);
+
+	transition-property: all;
+	transition-duration: 0.5s;
 
 	font-family: $sans-serif;
+	font-weight: 700;
 	font-size: 1em;
 	text-align: center;
 	color: $load-more-btn-color;
@@ -13,14 +17,20 @@ $load-more-btn-color: $white;
 
 	display: block;
 	padding: 2em;
+	margin: 0.25em 0.25em 0.5em 0.25em;
 	clear: both;
+
+	&.is-loading {
+		display: none;
+		pointer-events: none;
+	}
 
 	&:hover {
 
 		background: #ec2327;
 		text-decoration: none;
 		color: $load-more-btn-color;
-		padding: 2.5em;
+		// padding: 2.5em;
 
 	}
 
