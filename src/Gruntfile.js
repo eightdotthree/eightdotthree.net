@@ -44,10 +44,9 @@ module.exports = function (grunt) {
         if (target === 'dist') {
             return grunt.task.run(['build', 'open', 'connect:dist:keepalive']);
         }
-
         grunt.task.run([
-            'clean:assemble',
-            'assemble',
+            // 'clean:assemble',
+            // 'assemble',
             'clean:server',
             'concurrent:server',
             'autoprefixer',
@@ -80,8 +79,8 @@ module.exports = function (grunt) {
     ]);
 
     grunt.registerTask('default', [
-        'clean:assemble',
-        'assemble',
+        // 'clean:assemble',
+        // 'assemble',
         'jshint',
         'build'
     ]);

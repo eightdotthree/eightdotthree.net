@@ -5,25 +5,24 @@ body-class: "photo"
 layout: default.hbs
 ---
 
-{{> _intro-content }}
+
 
 <section>
 
+	<h1>{{ name }}</h1>
+
 	<ul>
-		<li data-ng-repeat="p in pics | orderBy: orderBy">
-			<a href="{{p.link}}" target="_blank">
-				<img data-ng-src="{{p.images.low_resolution.url}}" class="img-responsive thumbnail" title="{{p.caption.text}}">
+		<li data-ng-repeat="p in photos | orderBy: orderBy">
+			<a href="{{ p.link }}" target="_blank">
+				<img ng-src="{{ p.images.low_resolution.url }}" class="img-responsive thumbnail" title="{{ p.caption.text }}">
 			</a>
-			<span>
-				{{p.likes.count}}
-			</span>
 		</li>
 	</ul>
 
 </section>
 
 <div>
-	<a id="js-load-more-btn" class="load-more-btn" href="//www.instagram.com/8dot3">
+	<a id="js-load-more-btn" class="load-more-btn" href="//www.instagram.com/8dot3" data-ng-click="getImages()">
 		Load More
 	</a>
 </div>
