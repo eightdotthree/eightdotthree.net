@@ -1,5 +1,7 @@
 (function() {
 
+  'use strict';
+
 	eightdotthreeApp.directive('unveil', function($timeout) {
 
   		return {
@@ -24,4 +26,50 @@
   		};
 	});
 
-})();
+  eightdotthreeApp.directive('loadingSpinner', function() {
+
+    return {
+      restrict: 'C',
+      link: function($scope, element, attrs) {
+
+        $scope.$watch('loading', function(newValue, oldValue) {
+
+          if (!newValue) {
+            element.removeClass('is-loading');
+          } else {
+            element.addClass('is-loading');
+          }
+
+        });
+
+      }
+    };
+
+  });
+
+  eightdotthreeApp.directive('loadMoreBtn', function() {
+
+    return {
+      restrict: 'C',
+      link: function ($scope, element, attrs) {
+
+        element.bind('click', function() {
+          $scope.getNextPage();
+        });
+
+        $scope.$watch('loading', function(newValue, oldValue) {
+
+          if (!newValue) {
+            element.removeClass('is-loading');
+          } else {
+            element.addClass('is-loading');
+          }
+
+        });
+
+      }
+    };
+
+  });
+
+})(eightdotthreeApp);

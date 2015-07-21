@@ -1,8 +1,10 @@
 .container-fluid {
+
 	padding-left: 5px;
 	padding-right: 5px;
-	.loading-spinner {
-		margin: 0 auto 1.8em auto;
-		display: block;
+
+	> ul {
+		margin: 0;
 	}
+
 }

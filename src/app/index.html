@@ -19,7 +19,7 @@
 		<!-- endbuild -->
 	</head>
 
-	<body data-ng-controller="EightdotthreeController">
+	<body data-ng-controller="EightdotthreeController as cont">
 
 		<header class="site-header">
 			<h1>8.3</h1>
@@ -27,9 +27,7 @@
 
 		<section class="container-fluid">
 
-			<img data-ng-hide="loaded" class="loading-spinner" src="/img/loadingSpinner.gif" width="32" height="32" alt="Loading..." />
-
-			<ul>
+			<ul class="clearfix">
 				<li data-ng-repeat="p in photos">
 					<a href="{{ p.link }}" target="_blank" class="photo-item photo-item-link">
 						<div class="photo-item-details">
@@ -45,13 +43,13 @@
 				</li>
 			</ul>
 
-			<!--
-			<div>
-				<a id="js-load-more-btn" class="load-more-btn" data-ng-click="getImages()">
-					Load More
-				</a>
+			<div class="loading-spinner">
+				<img src="/img/loadingSpinner.gif" width="32" height="32" alt="Loading..." />
 			</div>
-			-->
+
+			<a class="load-more-btn">
+				Load More
+			</a>
 
 		</section>
 

@@ -1,5 +1,7 @@
 (function() {
 
+	'use-strict';
+
 	/**
 	 * My Instagram API
 	 */
@@ -19,32 +21,35 @@
 		 */
 		function buildEndpoint(func) {
 
-			var endpoint = SETTINGS.API_URL + func + '?client_id=' + SETTINGS.CLIENT_ID + '&count=' + SETTINGS.COUNT +'&callback=JSON_CALLBACK';
-			return endpoint;
-
-		};
-
-		function get(func, callback) {
-
 			var endpoint;
 
 			switch (func) {
 				case '/users/media/recent/' : {
-					endpoint = buildEndpoint('/users/' + SETTINGS.USER_ID + '/media/recent/');
+					endpoint = SETTINGS.API_URL + '/users/' + SETTINGS.USER_ID + '/media/recent/?client_id=' + SETTINGS.CLIENT_ID + '&count=' + SETTINGS.COUNT;
 					break;
 				}
 				default : {
-					endpoint = buildEndpoint('/media/popular/');
+					endpoint = func;
 				}
 			}
 
+			return endpoint + '&callback=JSON_CALLBACK';
+
+		}
+
+		/**
+		 * call the API with the supplied endpoint
+		 */
+		function get(endpoint, callback) {
+
 			$http.jsonp(endpoint).success(function(response) {
-	            callback(response.data);
+	            callback(response);
 	        });
 
-		};
+		}
 
 		return {
+			buildEndpoint: buildEndpoint,
 			get: get
 		};
 

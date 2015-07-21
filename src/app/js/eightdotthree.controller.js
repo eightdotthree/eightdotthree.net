@@ -8,26 +8,50 @@
 
     	$scope.photos = [];
         $scope.have = [];
-        $scope.loaded = false;
+        $scope.loading = true;
+        $scope.loadedIndex = 0;
+        $scope.nextPageUrl = '';
 
-    	$scope.getImages = function() {
+    	$scope.getFirstPage = function() {
 
-    		Instagram.get('/users/media/recent/', function(data) {
+            $scope.loading = true;
 
-                for (var i = 0; i < data.length; i++) {
-                    if (typeof $scope.have[data[i].id] === 'undefined') {
-                        $scope.photos.push(data[i]);
-                        $scope.have[data[i].id] = '1';
-                    }
-                }
-
-                $scope.loaded = true;
-
-            });
+            var endpoint = Instagram.buildEndpoint('/users/media/recent/');
+    		Instagram.get(endpoint, $scope.processFeed);
 
         };
 
-        $scope.getImages();
+        $scope.getNextPage = function() {
+
+            if ($scope.nextPageUrl !== '') {
+
+                $scope.loading = true;
+
+                var endpoint = Instagram.buildEndpoint($scope.nextPageUrl);
+                Instagram.get(endpoint, $scope.processFeed);
+
+            }
+
+        };
+
+        $scope.processFeed = function(response) {
+
+            var data = response.data;
+
+            for (var i = 0; i < data.length; i += 1) {
+                if (typeof $scope.have[data[i].id] === 'undefined') {
+                    $scope.loadedIndex += 1;
+                    $scope.photos.push(data[i]);
+                    $scope.have[data[i].id] = '1';
+                }
+            }
+
+            $scope.nextPageUrl = response.pagination.next_url;
+            $scope.loading = false;
+
+        };
+
+        $scope.getFirstPage();
 
     });
 
