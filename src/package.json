@@ -22,6 +22,7 @@
     "grunt-execute": "^0.2.2",
     "grunt-modernizr": "~0.6.0",
     "grunt-open": "~0.2.3",
+    "grunt-rev": "^0.1.0",
     "grunt-svgmin": "~2.0.0",
     "grunt-usemin": "~2.6.2",
     "load-grunt-configs": "^0.4.2",

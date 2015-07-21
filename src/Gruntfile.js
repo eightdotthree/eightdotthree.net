@@ -31,7 +31,7 @@ module.exports = function (grunt) {
     require('time-grunt')(grunt);
 
     // Assemble!
-    grunt.loadNpmTasks('assemble');
+    //grunt.loadNpmTasks('assemble');
 
     // For executing the updateScss.js script in app/assemble/helpers
     grunt.loadNpmTasks('grunt-execute');
@@ -59,17 +59,22 @@ module.exports = function (grunt) {
     ]);
 
     grunt.registerTask('build', [
-        'clean:dist',
-        'useminPrepare',
-        'concurrent:dist',
-        'autoprefixer',
-        'concat',
-        'cssmin',
-        'uglify',
-        'copy:dist',
-        'usemin',
-        'modernizr:dist'
+        'copy', 'useminPrepare', 'concat', 'uglify', 'cssmin', 'rev', 'usemin'
     ]);
+
+
+    // grunt.registerTask('build', [
+    //     'clean:dist',
+    //     'useminPrepare',
+    //     'concurrent:dist',
+    //     'autoprefixer',
+    //     'concat',
+    //     'cssmin',
+    //     'uglify',
+    //     'copy:dist',
+    //     'usemin',
+    //     'modernizr:dist'
+    // ]);
 
     grunt.registerTask('deploy', [
         'clean:deploy',
