@@ -1,10 +1,7 @@
-/*jshint -W079 */
+(function(angular, window) {
 
-'use strict';
+	'use strict';
 
-var eightdotthreeApp = angular.module('eightdotthreeApp', []);
+	angular.module('eightdotthreeApp', []);
 
-/**
- * todo
- *	- add details on photo click
- */
+ })(window.angular, window);

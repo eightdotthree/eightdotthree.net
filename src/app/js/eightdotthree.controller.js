@@ -1,58 +1,60 @@
-(function() {
+(function(angular, window) {
 
     'use strict';
 
     /**
      */
-    eightdotthreeApp.controller('EightdotthreeController', function($scope, Instagram) {
+    angular.module('eightdotthreeApp').controller('EightdotthreeController', function(Instagram) {
 
-    	$scope.photos = [];
-        $scope.have = [];
-        $scope.loading = true;
-        $scope.loadedIndex = 0;
-        $scope.nextPageUrl = '';
+        var ctrl = this;
 
-    	$scope.getFirstPage = function() {
+    	ctrl.photos = [];
+        ctrl.have = [];
+        ctrl.loading = true;
+        ctrl.loadedIndex = 0;
+        ctrl.nextPageUrl = '';
 
-            $scope.loading = true;
+    	ctrl.getFirstPage = function() {
+
+            ctrl.loading = true;
 
             var endpoint = Instagram.buildEndpoint('/users/media/recent/');
-    		Instagram.get(endpoint, $scope.processFeed);
+    		Instagram.get(endpoint, ctrl.processFeed);
 
         };
 
-        $scope.getNextPage = function() {
+        ctrl.getNextPage = function() {
 
-            if ($scope.nextPageUrl !== '') {
+            if (ctrl.nextPageUrl !== '') {
 
-                $scope.loading = true;
+                ctrl.loading = true;
 
-                var endpoint = Instagram.buildEndpoint($scope.nextPageUrl);
-                Instagram.get(endpoint, $scope.processFeed);
+                var endpoint = Instagram.buildEndpoint(ctrl.nextPageUrl);
+                Instagram.get(endpoint, ctrl.processFeed);
 
             }
 
         };
 
-        $scope.processFeed = function(response) {
+        ctrl.processFeed = function(response) {
 
             var data = response.data;
 
             for (var i = 0; i < data.length; i += 1) {
-                if (typeof $scope.have[data[i].id] === 'undefined') {
-                    $scope.loadedIndex += 1;
-                    $scope.photos.push(data[i]);
-                    $scope.have[data[i].id] = '1';
+                if (typeof ctrl.have[data[i].id] === 'undefined') {
+                    ctrl.loadedIndex += 1;
+                    ctrl.photos.push(data[i]);
+                    ctrl.have[data[i].id] = '1';
                 }
             }
 
-            $scope.nextPageUrl = response.pagination.next_url;
-            $scope.loading = false;
+            ctrl.nextPageUrl = response.pagination.next_url;
+            ctrl.loading = false;
 
         };
 
-        $scope.getFirstPage();
+        ctrl.getFirstPage();
 
     });
 
-})();
+})(window.angular, window);
