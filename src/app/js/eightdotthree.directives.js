@@ -2,6 +2,45 @@
 
   'use strict';
 
+  /*
+  angular.module('eightdotthreeApp').directive('photoDetails', function() {
+
+      var controller = ['$scope', 'escapeHtmlFilter', function($scope, escapeHtmlFilter) {
+
+        // console.log('controller');
+
+        var caption = $scope.p.caption;
+        if (caption != null) {
+          caption = escapeHtmlFilter(caption.text);
+        }
+
+        // $scope.p.photoInfo = {
+        //   caption: caption,
+        //   numLikes: $scope.p.likes.count,
+        //   numComments: $scope.p.comments.count,
+        //   filter: $scope.p.filter
+        // }
+
+        console.log($scope.photoInfo);
+
+      }];
+
+      var link = function(scope, element) {
+
+        // console.log('link');
+        // console.log('caption: ' + scope.p.caption);
+
+      }
+
+      return {
+        restrict: 'C',
+        controller: controller,
+        link: link
+      };
+
+  });
+  */
+
 	angular.module('eightdotthreeApp').directive('unveil', function($timeout) {
 
   		return {
