@@ -1,8 +1,8 @@
-(function() {
+(function(angular, $, window) {
 
   'use strict';
 
-	eightdotthreeApp.directive('unveil', function($timeout) {
+	angular.module('eightdotthreeApp').directive('unveil', function($timeout) {
 
   		return {
   			restrict: 'C',
@@ -26,7 +26,7 @@
   		};
 	});
 
-  eightdotthreeApp.directive('loadingSpinner', function() {
+  angular.module('eightdotthreeApp').directive('loadingSpinner', function() {
 
     return {
       restrict: 'C',
@@ -47,7 +47,7 @@
 
   });
 
-  eightdotthreeApp.directive('loadMoreBtn', function() {
+  angular.module('eightdotthreeApp').directive('loadMoreBtn', function() {
 
     return {
       restrict: 'C',
@@ -72,4 +72,4 @@
 
   });
 
-})(eightdotthreeApp);
+})(window.angular, window.jQuery, window);

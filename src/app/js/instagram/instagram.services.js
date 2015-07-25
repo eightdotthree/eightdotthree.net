@@ -1,11 +1,11 @@
-(function() {
+(function(angular, window) {
 
-	'use-strict';
+	'use strict';
 
 	/**
 	 * My Instagram API
 	 */
-	eightdotthreeApp.factory('Instagram', function($http) {
+	angular.module('eightdotthreeApp').factory('Instagram', function($http) {
 
 		var SETTINGS = {
 			CLIENT_ID: '7d57478209ba4ed39e20d5be80935ffd',
@@ -55,4 +55,4 @@
 
 	});
 
-})();
+})(window.angular, window);

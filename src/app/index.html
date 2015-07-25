@@ -28,7 +28,7 @@
 		<section class="container-fluid">
 
 			<ul class="clearfix">
-				<li data-ng-repeat="p in photos">
+				<li data-ng-repeat="p in cont.photos">
 					<a href="{{ p.link }}" target="_blank" class="photo-item photo-item-link">
 						<div class="photo-item-details">
 							<h2 data-ng-html="{{ p.caption.text }}"></h2>
@@ -60,7 +60,6 @@
 		<script src="js/eightdotthree.app.js"></script>
 		<script src="js/eightdotthree.controller.js"></script>
 		<script src="js/eightdotthree.directives.js"></script>
-		<script src="js/eightdotthree.filters.js"></script>
 		<script src="js/instagram/instagram.services.js"></script>
 		<!-- endbuild -->
 
