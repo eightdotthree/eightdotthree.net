@@ -58,23 +58,19 @@ module.exports = function (grunt) {
         'jshint'
     ]);
 
+
     grunt.registerTask('build', [
-        'copy', 'useminPrepare', 'concat', 'uglify', 'cssmin', 'rev', 'usemin'
+        'clean:dist',
+        'useminPrepare',
+        'concurrent:dist',
+        'autoprefixer',
+        'concat',
+        'cssmin',
+        'uglify',
+        'copy:dist',
+        'usemin',
+        'modernizr:dist'
     ]);
-
-
-    // grunt.registerTask('build', [
-    //     'clean:dist',
-    //     'useminPrepare',
-    //     'concurrent:dist',
-    //     'autoprefixer',
-    //     'concat',
-    //     'cssmin',
-    //     'uglify',
-    //     'copy:dist',
-    //     'usemin',
-    //     'modernizr:dist'
-    // ]);
 
     grunt.registerTask('deploy', [
         'clean:deploy',

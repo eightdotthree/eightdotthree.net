@@ -10,9 +10,9 @@
 
 		<link href="//fonts.googleapis.com/css?family=Roboto:400,500,700,300,400italic" rel="stylesheet" type="text/css">
 
-		<link rel="stylesheet" href="css/8ac2b847.8ac2b847.main.css">
+		<link rel="stylesheet" href="css/main.css">
 
-		<script src="js/plugins/339920c3.339920c3.modernizr.js"></script>
+		<script src="js/plugins/modernizr.js"></script>
 	</head>
 
 	<body data-ng-controller="EightdotthreeController as cont">
@@ -24,11 +24,11 @@
 		<section class="container-fluid">
 
 			<ul class="clearfix">
-				<li data-ng-repeat="p in photos">
+				<li data-ng-repeat="p in cont.photos">
 					<a href="{{ p.link }}" target="_blank" class="photo-item photo-item-link">
 						<div class="photo-item-details">
-							<h2 data-ng-html="{{ p.caption.text }}"></h2>
-							<p>
+							<h2 data-ng-bind="p.caption.text | escapeHtml" data-ng-hide="p.caption.text == undefined"></h2>
+							<p class="photo-details">
 								<span data-ng-bind="{{ p.likes.count }}"></span> likes,
 								<span data-ng-bind="{{ p.comments.count }}"></span> comments,
 								<span data-ng-bind="{{ p.filter }}"></span>
@@ -49,7 +49,7 @@
 
 		</section>
 
-		<script src="js/9481c817.9481c817.main.js"></script>
+		<script src="js/main.js"></script>
 
 	</body>
 </html>
