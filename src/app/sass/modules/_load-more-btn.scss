@@ -20,6 +20,10 @@ $load-more-btn-color: $white;
 	margin: 0.25em 0.25em 0.5em 0.25em;
 	clear: both;
 
+	.no-js & {
+		display: none;
+	}
+
 	&.is-loading {
 		display: none;
 		pointer-events: none;
@@ -27,7 +31,7 @@ $load-more-btn-color: $white;
 
 	&:hover {
 
-		background: #ec2327;
+		background: $link-color;
 		text-decoration: none;
 		color: $load-more-btn-color;
 		// padding: 2.5em;

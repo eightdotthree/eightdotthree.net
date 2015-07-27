@@ -7,7 +7,7 @@
     "eqeqeq": true,
     "immed": true,
     "indent": 4,
-    "latedef": true,
+    "latedef": false,
     "newcap": true,
     "noarg": true,
     "quotmark": true,
@@ -20,7 +20,6 @@
     "white": true,
     "forin": true,
     "plusplus": true,
-    "globals": {
-      "window": false
-    }
+    "browser": true,
+    "jquery": true
 }

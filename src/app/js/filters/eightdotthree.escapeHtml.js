@@ -11,11 +11,12 @@
             '"': '&quot;',
             '\"': '&#39;',
             '/': '&#x2F;',
+            'undefined': '\'',
             '#': '\#'
         };
 
         return function(str) {
-            return String(str).replace(/[&<>"'\/#]/g, function (s) {
+            return String(str).replace(/[#]/g, function (s) {
                 return entityMap[s];
             });
         };

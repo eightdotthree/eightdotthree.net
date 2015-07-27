@@ -59,22 +59,18 @@ module.exports = function (grunt) {
     ]);
 
     grunt.registerTask('build', [
-        'clean:dist', 'useminPrepare', 'concat', /*'uglify',*/ 'cssmin', 'modernizr:dist', 'rev', 'usemin'
+        'clean:dist',
+        'modernizr:dist',
+        'useminPrepare',
+        'concurrent:dist',
+        'autoprefixer',
+        'concat',
+        'cssmin',
+        'uglify',
+        'rev',
+        'copy:dist',
+        'usemin'
     ]);
-
-
-    // grunt.registerTask('build', [
-    //     'clean:dist',
-    //     'useminPrepare',
-    //     'concurrent:dist',
-    //     'autoprefixer',
-    //     'concat',
-    //     'cssmin',
-    //     // 'uglify',
-    //     'copy:dist',
-    //     'usemin',
-    //     'modernizr:dist'
-    // ]);
 
     grunt.registerTask('deploy', [
         'clean:deploy',
