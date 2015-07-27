@@ -59,7 +59,16 @@ module.exports = function (grunt) {
     ]);
 
     grunt.registerTask('build', [
-        'clean:dist', 'useminPrepare', 'concat', /*'uglify',*/ 'cssmin', 'modernizr:dist', 'rev', 'usemin'
+        'clean:dist',
+        'useminPrepare',
+        'concurrent:dist',
+        'autoprefixer',
+        'concat',
+        'cssmin',
+        'copy:dist',
+        'usemin',
+        'rev',
+        'modernizr:dist'
     ]);
 
 
