@@ -60,30 +60,17 @@ module.exports = function (grunt) {
 
     grunt.registerTask('build', [
         'clean:dist',
+        'modernizr:dist',
         'useminPrepare',
         'concurrent:dist',
         'autoprefixer',
         'concat',
         'cssmin',
-        'copy:dist',
-        'usemin',
+        'uglify',
         'rev',
-        'modernizr:dist'
+        'copy:dist',
+        'usemin'
     ]);
-
-
-    // grunt.registerTask('build', [
-    //     'clean:dist',
-    //     'useminPrepare',
-    //     'concurrent:dist',
-    //     'autoprefixer',
-    //     'concat',
-    //     'cssmin',
-    //     // 'uglify',
-    //     'copy:dist',
-    //     'usemin',
-    //     'modernizr:dist'
-    // ]);
 
     grunt.registerTask('deploy', [
         'clean:deploy',

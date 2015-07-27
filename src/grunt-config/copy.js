@@ -14,8 +14,7 @@ module.exports = function(grunt, options){
           'css/{,*/}*.{jpg,gif,png,webp}', // if the css is generated into the app directory
           'css/fonts/*', // if the css is generated into the app directory
           '.tmp/concat/css/**/*.{jpg,gif,png,webp}', // if the css is generated into the .tmp directory
-          '.tmp/concat/css/**/*.{css}', // if the css is generated into the .tmp directory
-          'modules/*'
+          '.tmp/concat/css/**/*.{css}' // if the css is generated into the .tmp directory
         ]
       }, {
         expand: true,
