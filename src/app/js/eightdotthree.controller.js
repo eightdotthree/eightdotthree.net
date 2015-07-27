@@ -1,4 +1,4 @@
-(function(angular, window) {
+(function(angular, window, document) {
 
     'use strict';
 
@@ -57,7 +57,7 @@
 
         vm.getFirstPage();
 
-    };
+    }
 
 
     Object.defineProperty(EightdotthreeController.prototype, 'loadingSpinner', {
@@ -95,7 +95,7 @@
             var spinner = this._loadingSpinner;
             var loadMoreBtn = this._loadMoreBtn;
 
-            if (typeof spinner != 'undefined') {
+            if (typeof spinner !== 'undefined') {
                 if (!val) {
                     spinner.className = 'loading-spinner';
                 } else {
@@ -103,7 +103,7 @@
                 }
             }
 
-            if (typeof loadMoreBtn != 'undefined') {
+            if (typeof loadMoreBtn !== 'undefined') {
                 if (!val) {
                     loadMoreBtn.className = 'load-more-btn';
                 } else {
@@ -115,4 +115,4 @@
 
 
 
-})(window.angular, window);
+})(window.angular, window, document);

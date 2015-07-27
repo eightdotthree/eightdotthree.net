@@ -1,4 +1,4 @@
-(function(angular, window) {
+(function(angular, window, document) {
 
     'use strict';
 
@@ -22,8 +22,8 @@
                 vm.infoOpen = true;
             }
 
-        }
+        };
 
-    };
+    }
 
-})(window.angular, window);
+})(window.angular, window, document);
