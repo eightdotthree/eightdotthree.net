@@ -15,6 +15,14 @@ $site-header-default-font: $sans-serif;
 	h1 {
 		font-size: 1em;
 		color: $site-header-text-color;
+		display: inline-block;
+	}
+
+	.info-link {
+		font-size: 1em;
+		color: $site-header-text-color;
+		float: right;
+		cursor: pointer;
 	}
 
 }
