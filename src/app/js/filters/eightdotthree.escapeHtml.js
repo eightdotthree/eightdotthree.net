@@ -5,12 +5,12 @@
     angular.module('eightdotthreeApp').filter('escapeHtml', function () {
 
         var entityMap = {
-            '&': '&amp;',
-            '<': '&lt;',
-            '>': '&gt;',
-            '"': '&quot;',
-            '\"': '&#39;',
-            '/': '&#x2F;',
+            // '&': '&amp;',
+            // '<': '&lt;',
+            // '>': '&gt;',
+            // '"': '&quot;',
+            // '\"': '&#39;',
+            // '/': '&#x2F;',
             'undefined': '\'',
             '#': '\#'
         };
