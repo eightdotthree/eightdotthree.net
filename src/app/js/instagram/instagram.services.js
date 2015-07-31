@@ -19,13 +19,17 @@
 		/**
 		 * Builds the Instagram API endpoint
 		 */
-		function buildEndpoint(func) {
+		function buildEndpoint(func, params) {
 
 			var endpoint;
 
 			switch (func) {
 				case '/users/media/recent/' : {
 					endpoint = SETTINGS.API_URL + '/users/' + SETTINGS.USER_ID + '/media/recent/?client_id=' + SETTINGS.CLIENT_ID + '&count=' + SETTINGS.COUNT;
+					break;
+				}
+				case '/tags/tag-name/media/recent/' : {
+					endpoint = SETTINGS.API_URL + '/tags/' + params.tag + '/media/recent/?client_id=' + SETTINGS.CLIENT_ID + '&count=' + SETTINGS.COUNT;
 					break;
 				}
 				default : {
