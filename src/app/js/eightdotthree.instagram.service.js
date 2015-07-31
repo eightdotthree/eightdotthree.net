@@ -5,7 +5,7 @@
 	/**
 	 * My Instagram API
 	 */
-	angular.module('eightdotthreeApp').factory('Instagram', function($http) {
+	angular.module('eightdotthreeApp').service('Instagram', function($http, $q) {
 
 		var SETTINGS = {
 			CLIENT_ID: '7d57478209ba4ed39e20d5be80935ffd',
@@ -16,10 +16,7 @@
 			COUNT: 32
 		};
 
-		var instagram = {};
-		instagram.photos = [];
-		instagram.loading = true;
-
+		var photos = [];
         var have = [];
         var loadedIndex = 0;
         var nextPageUrl = '';
@@ -52,60 +49,47 @@
 		/**
 		 * call the API with the supplied endpoint
 		 */
-		function get(endpoint, callback) {
+		function get(endpoint, deferred) {
 
-			instagram.loading = true;
-
-			console.group('get');
+			console.group('Instagram.get');
 			console.info(endpoint);
 			console.groupEnd();
 
 			$http.jsonp(endpoint).success(function(response) {
-				instagram.loading = false;
-	            processFeed(response);
+
+	            var data = response.data;
+
+	            if (typeof data !== 'undefined') {
+	                for (var i = 0; i < data.length; i += 1) {
+	                    if (typeof have[data[i].id] === 'undefined') {
+	                    	photos.push(data[i]);
+	                        loadedIndex += 1;
+	                        have[data[i].id] = '1';
+	                    }
+	                }
+	                nextPageUrl = response.pagination.next_url;
+	            }
+
+	            deferred.resolve(photos);
+
 	        });
 
 		}
 
-		function processFeed(response) {
-
-			var data = response.data;
-
-			console.group('processFeed');
-			// console.group('data');
-   			// console.info(data);
-			// console.groupEnd();
-
-            if (typeof data !== 'undefined') {
-                for (var i = 0; i < data.length; i += 1) {
-                    if (typeof have[data[i].id] === 'undefined') {
-                    	instagram.photos.push(data[i]);
-                        loadedIndex += 1;
-                        have[data[i].id] = '1';
-                    }
-                }
-                nextPageUrl = response.pagination.next_url;
-            }
-
-            console.info(instagram.photos);
-
-            console.groupEnd();
-
-        }
-
 		/**
 		 * Gets the first page of the current endpoint
 		 */
-		instagram.getFirstPage = function(tag) {
+		function getFirstPage(tag) {
 
-			nextPageUrl = '';
+			console.group('Instagram.getFirstPage')
+			console.info('tag: ' + tag);
+
+			var deferred = $q.defer();
+			var promise = deferred.promise;
+
 			loadedIndex = 0;
 			have = [];
-
-			instagram.photos = [];
-
-			console.group('getFirstPage')
-			console.info('tag: ' + tag);
+			photos = [];
 
 			var endpoint;
 
@@ -118,33 +102,42 @@
             console.info('endpoint: ' + endpoint);
             console.groupEnd();
 
-            get(endpoint);
+            get(endpoint, deferred);
 
+            return promise;
 
-		}
+		};
 
 		/**
 		 * Gets the next page of the current endpoint
 		 */
-		instagram.getNextPage = function() {
+		function getNextPage() {
 
-			console.group('getNextPage');
+			console.group('Instagram.getNextPage');
+			console.log('nextPageUrl: ' + nextPageUrl);
+
+			var deferred = $q.defer();
+			var promise = deferred.promise;
 
 			var endpoint;
 
             if (nextPageUrl !== '') {
-
                 endpoint = buildEndpoint(nextPageUrl);
-                get(endpoint);
-
+                get(endpoint, deferred);
             }
 
             console.info('endpoint: ' + endpoint);
             console.groupEnd();
 
+            return promise;
+
         };
 
-        return instagram;
+        return {
+        	getFirstPage: getFirstPage,
+        	getNextPage: getNextPage,
+        	photos: photos
+        };
 
 	});
 
