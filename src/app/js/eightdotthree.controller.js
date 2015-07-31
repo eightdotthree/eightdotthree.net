@@ -23,9 +23,7 @@
 
             var endpoint;
 
-            console.log(vm.tag);
-
-            if (vm.tag != '') {
+            if (vm.tag !== '') {
                 endpoint = Instagram.buildEndpoint('/tags/tag-name/media/recent/', { tag: vm.tag });
             } else {
                 endpoint = Instagram.buildEndpoint('/users/media/recent/');
@@ -52,15 +50,19 @@
 
             var data = response.data;
 
-            for (var i = 0; i < data.length; i += 1) {
-                if (typeof vm.have[data[i].id] === 'undefined') {
-                    vm.loadedIndex += 1;
-                    vm.photos.push(data[i]);
-                    vm.have[data[i].id] = '1';
-                }
-            }
+            if (typeof data !== 'undefined') {
 
-            vm.nextPageUrl = response.pagination.next_url;
+                for (var i = 0; i < data.length; i += 1) {
+                    if (typeof vm.have[data[i].id] === 'undefined') {
+                        vm.loadedIndex += 1;
+                        vm.photos.push(data[i]);
+                        vm.have[data[i].id] = '1';
+                    }
+                }
+
+                vm.nextPageUrl = response.pagination.next_url;
+
+            }
             vm.loading = false;
 
         };
