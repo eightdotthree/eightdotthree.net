@@ -1,0 +1,24 @@
+<nav class="navbar navbar-inverse" role="navigation" data-ng-controller="InstagramTagsController as igCont" >
+  <div class="container-fluid">
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li data-ng-class="{ active: isActive('/') }">
+          <a data-ng-href="#/">
+            Home
+          </a>
+        </li>
+        <li data-ng-class="{ active: isActive('/tags/pug') }">
+          <a data-ng-href="#/tag/pug">
+            pug
+          </a>
+        </li>
+        <li data-ng-class="{ active: isActive('/tags/travel') }">
+          <a data-ng-href="#/tag/travel">
+            travel
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
