@@ -4,7 +4,7 @@
 
     angular.module('eightdotthreeApp').controller('EightdotthreeController', EightdotthreeController);
 
-    function EightdotthreeController(Instagram) {
+    function EightdotthreeController(Instagram, $routeParams) {
 
         var vm = this;
 
@@ -15,12 +15,22 @@
         vm.loading = true;
         vm.loadedIndex = 0;
         vm.nextPageUrl = '';
+        vm.tag = typeof $routeParams.tagName !== 'undefined' ? $routeParams.tagName : '';
 
         vm.getFirstPage = function() {
 
             vm.loading = true;
 
-            var endpoint = Instagram.buildEndpoint('/users/media/recent/');
+            var endpoint;
+
+            console.log(vm.tag);
+
+            if (vm.tag != '') {
+                endpoint = Instagram.buildEndpoint('/tags/tag-name/media/recent/', { tag: vm.tag });
+            } else {
+                endpoint = Instagram.buildEndpoint('/users/media/recent/');
+            }
+
             Instagram.get(endpoint, vm.processFeed);
 
         };
@@ -58,7 +68,6 @@
         vm.getFirstPage();
 
     }
-
 
     Object.defineProperty(EightdotthreeController.prototype, 'loadingSpinner', {
         enumerable: true,
@@ -112,7 +121,5 @@
             }
         }
     });
-
-
 
 })(window.angular, window, document);
