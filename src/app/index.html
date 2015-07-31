@@ -32,33 +32,11 @@
 			</div>
 		</header>
 
-		<section class="container-fluid" data-ng-controller="EightdotthreeController as cont">
+		<nav class="tags" ng-controller="InstagramTagsController" ng-include="'views/tags.html'">
 
-			<ul class="clearfix">
-				<li data-ng-repeat="p in cont.photos">
-					<a href="{{ p.link }}" title="See this on Instagram" target="_blank" class="photo-item photo-item-link">
-						<div class="photo-item-details">
-							<h2 data-ng-bind="p.caption.text | escapeHtml" data-ng-hide="p.caption.text == undefined"></h2>
-							<!--
-							<p class="photo-details">
-								<span data-ng-bind="{{ p.likes.count }}"></span> likes,
-								<span data-ng-bind="{{ p.comments.count }}"></span> comments,
-								<span data-ng-bind="{{ p.dick }}"></span>
-							</p>
-							-->
-						</div>
-						<img src="img/unveilPlaceholder.gif" data-unveil-src="{{ p.images.standard_resolution.url }}" title="{{ p.caption.text }}" class="photo-item-img unveil" width="640" height="640" />
-					</a>
-				</li>
-			</ul>
+		</nav>
 
-			<div id="js-loading-spinner" class="loading-spinner">
-				<img src="/img/loadingSpinner.gif" width="32" height="32" alt="Loading..." />
-			</div>
-
-			<a id="js-load-more-btn" class="load-more-btn" data-ng-click="cont.getNextPage()">
-				Load More
-			</a>
+		<section class="container-fluid" data-ng-view>
 
 		</section>
 
@@ -66,10 +44,12 @@
 		<script src="bower_components/jquery/dist/jquery.js"></script>
 		<script src="bower_components/unveil/jquery.unveil.js"></script>
 		<script src="bower_components/angular/angular.js"></script>
+		<script src="bower_components/angular-route/angular-route.js"></script>
 		<script src="js/eightdotthree.app.js"></script>
 		<script src="js/filters/eightdotthree.escapeHtml.js"></script>
 		<script src="js/eightdotthree.controller.js"></script>
 		<script src="js/eightdotthree.siteHeader.controller.js"></script>
+		<script src="js/eightdotthree.instagramTags.controller.js"></script>
 		<script src="js/eightdotthree.unveil.directive.js"></script>
 		<script src="js/instagram/instagram.services.js"></script>
 		<!-- endbuild -->
