@@ -11,16 +11,24 @@
         var vm = this;
         var tag = typeof $routeParams.tagName !== 'undefined' ? $routeParams.tagName : '';
 
-        console.info('tag: ' + tag);
-
-        vm.loading = Instagram.loading;
-        vm.photos = Instagram.photos;
-
-        vm.getNextPage = function() {
-            Instagram.getNextPage();
+        function photosLoaded(photos) {
+            vm.loading = false;
+            vm.photos = photos;
         }
 
-        Instagram.getFirstPage(tag);
+        vm.getNextPage = function() {
+            vm.loading = true;
+            Instagram.getNextPage().then(photosLoaded);
+        }
+
+        vm.getFirstPage = function() {
+            vm.loading = true;
+            Instagram.getFirstPage(tag).then(photosLoaded);
+        }
+
+        vm.getFirstPage();
+
+        console.groupEnd();
 
     }
 
@@ -43,6 +51,28 @@
     //     },
     //     set: function(val) {
     //         this._loadMoreBtn = val;
+    //     }
+    // });
+
+    // Object.defineProperty(EightdotthreeController.prototype, 'photos', {
+    //     enumerable: true,
+    //     configurable: true,
+    //     get: function() {
+    //         return this._photos;
+    //     },
+    //     set: function(val) {
+    //         this._photos = val;
+    //     }
+    // });
+
+    // Object.defineProperty(EightdotthreeController.prototype, 'loading', {
+    //     enumerable: true,
+    //     configurable: true,
+    //     get: function() {
+    //         return this._loading;
+    //     },
+    //     set: function(val) {
+    //         this._loading = val;
     //     }
     // });
 
