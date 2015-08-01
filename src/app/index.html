@@ -79,26 +79,27 @@
 
 		</div>
 
-		<div id="#navmenu" class="navmenu navmenu-inverse navmenu-fixed-right">
+		<aside id="#navmenu" class="navmenu navmenu-default navmenu-fixed-right">
 
-			<p>These #hashtags are pulled from my photos and will load others' photos.</p>
+			<div class="row">
 
-			<nav data-ng-controller="InstagramTagsController as cont">
+				<div class="col-sm-12">
 
-	      <ul class="nav navmenu-nav">
-	      	<a class="btn btn-link" data-ng-repeat="tag in cont.tags" data-ng-class="{ active: isActive('/tag/{{ tag }}') }" data-ng-href="#/tag/{{tag}}">
-	      		<span data-ng-bind="tag"></span>
-	      	</a>
-	        <!-- <li data-ng-repeat="tag in cont.tags">
-	          <a data-ng-class="{ active: isActive('/tag/{{ tag }}') }" data-ng-href="#/tag/{{tag}}">
-	            <span data-ng-bind="tag"></span>
-	          </a>
-	        </li> -->
-	      </ul>
+					<nav data-ng-controller="InstagramTagsController as cont">
 
-	    </nav>
+			      <ul class="nav navmenu-nav">
+			      	<a class="btn btn-link" data-ng-repeat="tag in cont.tags" data-ng-class="{ active: isActive('/tag/{{ tag }}') }" data-ng-href="#/tag/{{tag}}">
+			      		<span data-ng-bind="tag"></span>
+			      	</a>
+			      </ul>
 
-		</div>
+			    </nav>
+
+			  </div>
+
+	  	</div>
+
+		</aside>
 
 		<!-- build:js js/main.js -->
 
