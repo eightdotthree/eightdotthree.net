@@ -9,6 +9,8 @@
         console.group('EightdotthreePhotosController');
 
         var vm = this;
+        vm.loading = true;
+
         var tag = typeof $routeParams.tagName !== 'undefined' ? $routeParams.tagName : '';
 
         function photosLoaded(photos) {
@@ -19,12 +21,12 @@
         vm.getNextPage = function() {
             vm.loading = true;
             Instagram.getNextPage().then(photosLoaded);
-        }
+        };
 
         vm.getFirstPage = function() {
             vm.loading = true;
             Instagram.getFirstPage(tag).then(photosLoaded);
-        }
+        };
 
         vm.getFirstPage();
 

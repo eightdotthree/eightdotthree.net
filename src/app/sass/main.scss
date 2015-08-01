@@ -28,8 +28,10 @@
 // modules
 @import "modules/_intro-content";
 @import "modules/_load-more-btn";
+@import "modules/_navmenu-offcanvas";
 @import "modules/_site-footer";
 @import "modules/_site-header";
+@import "modules/_tags";
 
 
 // photo item includes
@@ -40,6 +42,9 @@
 @import "modules/photo-item/photo-item-link";
 
 @import "modules/loading-spinner";
+
+// partials
+@import "partials/_btn-tag";
 
 // Helper Classes
 @import "helpers/_access";

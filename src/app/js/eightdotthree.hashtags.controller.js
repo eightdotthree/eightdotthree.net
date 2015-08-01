@@ -4,17 +4,10 @@
 
     angular.module('eightdotthreeApp').controller('EightdotthreeHashtagsController', EightdotthreeHashtagsController);
 
-    function EightdotthreeHashtagsController() {
+    function EightdotthreeHashtagsController(Instagram) {
 
         var vm = this;
-        vm.tags = [
-        	'pug',
-        	'dog',
-        	'cat',
-        	'travel',
-        	'beer',
-        	'pittsburgh'
-        ];
+        vm.tags = Instagram.hashtags;
 
     }
 

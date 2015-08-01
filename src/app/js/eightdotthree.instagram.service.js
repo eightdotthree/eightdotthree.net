@@ -5,7 +5,9 @@
 	/**
 	 * My Instagram API
 	 */
-	angular.module('eightdotthreeApp').service('Instagram', function($http, $q) {
+	angular.module('eightdotthreeApp').service('Instagram', Instagram);
+
+	function Instagram($http, $q) {
 
 		var SETTINGS = {
 			CLIENT_ID: '7d57478209ba4ed39e20d5be80935ffd',
@@ -16,9 +18,15 @@
 			COUNT: 32
 		};
 
+		var MINE = 'mine';
+		var THEIRS = 'theirs';
+
+		var whose = MINE; // keep track of whose photos we're viewing
+
 		var photos = [];
-        var have = [];
-        var loadedIndex = 0;
+		var hashtags = [];
+        var havePhoto = [];
+        var haveTag = [];
         var nextPageUrl = '';
 
 		/**
@@ -57,17 +65,37 @@
 
 			$http.jsonp(endpoint).success(function(response) {
 
-	            var data = response.data;
+	            var responseData = response.data;
 
-	            if (typeof data !== 'undefined') {
-	                for (var i = 0; i < data.length; i += 1) {
-	                    if (typeof have[data[i].id] === 'undefined') {
-	                    	photos.push(data[i]);
-	                        loadedIndex += 1;
-	                        have[data[i].id] = '1';
+	            if (typeof responseData !== 'undefined') {
+
+	                for (var i = 0; i < responseData.length; i += 1) {
+
+	                	var data = responseData[i];
+
+	                    if (typeof havePhoto[data.id] === 'undefined') {
+	                    	photos.push(data);
+	                        havePhoto[data.id] = '1';
 	                    }
+
+	                    // deal with the tags
+	                    var tags = data.tags;
+
+	                    if (typeof tags !== 'undefined' && whose === MINE) {
+	                    	var tagLen = tags.length;
+	                    	for (var j = 0; j < tagLen; j += 1) {
+	                    		var tag = tags[j];
+	                    		if (typeof haveTag[tag] === 'undefined') {
+	                    			hashtags.push(tag);
+	                    			haveTag[tag] = '1';
+	                    		}
+	                    	}
+	                    }
+
 	                }
+
 	                nextPageUrl = response.pagination.next_url;
+
 	            }
 
 	            deferred.resolve(photos);
@@ -81,17 +109,21 @@
 		 */
 		function getFirstPage(tag) {
 
-			console.group('Instagram.getFirstPage')
-			console.info('tag: ' + tag);
+			console.group('Instagram.getFirstPage');
 
-			var deferred = $q.defer();
-			var promise = deferred.promise;
-
-			loadedIndex = 0;
-			have = [];
+			havePhoto = [];
 			photos = [];
+			nextPageUrl = '';
+
+			if (tag !== '') {
+				whose = THEIRS;
+			} else {
+				whose = MINE;
+			}
 
 			var endpoint;
+			var deferred = $q.defer();
+			var promise = deferred.promise;
 
             if (tag !== '') {
                 endpoint = buildEndpoint('/tags/tag-name/media/recent/', { tag: tag });
@@ -106,7 +138,7 @@
 
             return promise;
 
-		};
+		}
 
 		/**
 		 * Gets the next page of the current endpoint
@@ -131,14 +163,26 @@
 
             return promise;
 
-        };
+        }
 
         return {
         	getFirstPage: getFirstPage,
         	getNextPage: getNextPage,
-        	photos: photos
+        	photos: photos,
+        	hashtags: hashtags
         };
 
-	});
+	}
+
+	Object.defineProperty(Instagram.prototype, 'whose', {
+        enumerable: true,
+        configurable: true,
+        get: function() {
+            return this._whose;
+        },
+        set: function(val) {
+            this._whose = val;
+        }
+    });
 
 })(window.angular, window);

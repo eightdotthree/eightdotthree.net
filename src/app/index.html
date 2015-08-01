@@ -44,7 +44,7 @@
 			      <a class="navbar-brand" href="#/">::::.:.</a>
 			    </div>
 
-		      <button type="button" class="navbar-toggle" data-toggle="offcanvas" data-recalc="false" data-target=".navmenu" data-canvas="#canvas">
+		      <button type="button" class="navbar-toggle" data-toggle="offcanvas" data-recalc="false" data-target=".navmenu" data-autohide="false" data-disable-scrolling="false" data-canvas="#canvas">
 		        <span class="icon-bar"></span>
 		        <span class="icon-bar"></span>
 		        <span class="icon-bar"></span>
@@ -60,21 +60,27 @@
 
 		</div>
 
-		<aside id="#navmenu" class="navmenu navmenu-default navmenu-fixed-right">
+		<aside id="#navmenu" class="navmenu navmenu-default navmenu-offcanvas navmenu-fixed-right">
 
 			<div class="row">
 
 				<div class="col-sm-12">
 
+					<p class="tags-description">
+						I used these #hashtags but didn't take the photos.
+					</p>
+
 					<nav data-ng-controller="EightdotthreeHashtagsController as cont">
 
-			      <ul class="nav navmenu-nav">
-			      	<a class="btn btn-link" data-ng-repeat="tag in cont.tags" data-ng-class="{ active: isActive('/tag/{{ tag }}') }" data-ng-href="#/tag/{{tag}}">
-			      		<span data-ng-bind="tag"></span>
-			      	</a>
-			      </ul>
+				      	<ul class="tags">
+				      		<a class="btn btn-link btn-tag btn-xs" data-ng-repeat="tag in cont.tags" data-ng-class="{ active: isActive('/tag/{{ tag }}') }" data-ng-href="#/tag/{{tag}}">
+				      			<span class="hashtag">#</span><span data-ng-bind="tag"></span>
+				      		</a>
+				      	</ul>
 
-			    </nav>
+				      	<p data-ng-hide="cont.tags.length > 0">No #hashtags to display. <a href="#/">Load my photos and see some #hashtags.</a></p>
+
+				    </nav>
 
 			  </div>
 
@@ -106,6 +112,18 @@
 		<script src="js/filters/eightdotthree.escapeHtml.js"></script>
 
 		<!-- endbuild -->
+
+		<script>
+
+			$(function() {
+
+				$(window).on('scroll', $.proxy(function(event) {
+					console.log(event);
+				}, this));
+
+			});
+
+		</script>
 
 	</body>
 </html>
