@@ -10,13 +10,14 @@
 
 		<link href="//fonts.googleapis.com/css?family=Roboto:400,500,700,300,400italic" rel="stylesheet" type="text/css">
 
-		<link rel="stylesheet" href="css/a021b272.main.css">
+		<link rel="stylesheet" href="css/f67b4a1d.main.css">
 
 		<script src="js/plugins/339920c3.modernizr.js"></script>
 	</head>
 
 	<body>
 
+		<!--
 		<header class="site-header" data-ng-controller="EightdotthreeSiteHeaderController as cont">
 			<h1>
 				<a class="info-link" data-ng-click="cont.toggleInfo()">8.3</a>
@@ -27,38 +28,75 @@
 				</p>
 			</div>
 		</header>
+		-->
 
-		<section class="container-fluid" data-ng-controller="EightdotthreeController as cont">
+		<div id="canvas" class="canvas">
 
-			<ul class="clearfix">
-				<li data-ng-repeat="p in cont.photos">
-					<a href="{{ p.link }}" title="See this on Instagram" target="_blank" class="photo-item photo-item-link">
-						<div class="photo-item-details">
-							<h2 data-ng-bind="p.caption.text | escapeHtml" data-ng-hide="p.caption.text == undefined"></h2>
-							<!--
-							<p class="photo-details">
-								<span data-ng-bind="{{ p.likes.count }}"></span> likes,
-								<span data-ng-bind="{{ p.comments.count }}"></span> comments,
-								<span data-ng-bind="{{ p.dick }}"></span>
-							</p>
-							-->
-						</div>
-						<img src="img/unveilPlaceholder.gif" data-unveil-src="{{ p.images.standard_resolution.url }}" title="{{ p.caption.text }}" class="photo-item-img unveil" width="640" height="640">
-					</a>
-				</li>
-			</ul>
+			<nav class="navbar navbar-inverse navbar-fixed-top">
 
-			<div id="js-loading-spinner" class="loading-spinner">
-				<img src="/img/loadingSpinner.gif" width="32" height="32" alt="Loading...">
-			</div>
+			  <div class="container">
 
-			<a id="js-load-more-btn" class="load-more-btn" data-ng-click="cont.getNextPage()">
-				Load More
-			</a>
+			    <div class="navbar-header">
+			      <a class="navbar-brand" href="#/">::::.:.</a>
+			    </div>
 
-		</section>
+		      <button type="button" class="navbar-toggle" data-toggle="offcanvas" data-recalc="false" data-target=".navmenu" data-autohide="false" data-disable-scrolling="false" data-canvas="#canvas">
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		      </button>
 
-		<script src="js/f4d3b62a.main.js"></script>
+			  </div>
+
+			</nav>
+
+			<section class="container-photos container-fluid" data-ng-view>
+
+			</section>
+
+		</div>
+
+		<aside id="#navmenu" class="navmenu navmenu-default navmenu-offcanvas navmenu-fixed-right">
+
+			<div class="row">
+
+				<div class="col-sm-12">
+
+					<p class="tags-description">
+						I used these #hashtags but didn't take the photos.
+					</p>
+
+					<nav data-ng-controller="EightdotthreeHashtagsController as cont">
+
+				      	<ul class="tags">
+				      		<a class="btn btn-link btn-tag btn-xs" data-ng-repeat="tag in cont.tags" data-ng-class="{ active: isActive('/tag/{{ tag }}') }" data-ng-href="#/tag/{{tag}}">
+				      			<span class="hashtag">#</span><span data-ng-bind="tag"></span>
+				      		</a>
+				      	</ul>
+
+				      	<p data-ng-hide="cont.tags.length > 0">No #hashtags to display. <a href="#/">Load my photos and see some #hashtags.</a></p>
+
+				    </nav>
+
+			  </div>
+
+	  	</div>
+
+		</aside>
+
+		<script src="js/254e461c.main.js"></script>
+
+		<script>
+
+			$(function() {
+
+				$(window).on('scroll', $.proxy(function(event) {
+					console.log(event);
+				}, this));
+
+			});
+
+		</script>
 
 	</body>
 </html>
