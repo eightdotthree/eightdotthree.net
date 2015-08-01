@@ -2,9 +2,9 @@
 
     'use strict';
 
-    angular.module('eightdotthreeApp').controller('InstagramTagsController', InstagramTagsController);
+    angular.module('eightdotthreeApp').controller('EightdotthreeHashtagsController', EightdotthreeHashtagsController);
 
-    function InstagramTagsController() {
+    function EightdotthreeHashtagsController() {
 
         var vm = this;
         vm.tags = [

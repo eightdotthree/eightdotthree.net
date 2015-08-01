@@ -2,11 +2,11 @@
 
     'use strict';
 
-    angular.module('eightdotthreeApp').controller('EightdotthreeController', EightdotthreeController);
+    angular.module('eightdotthreeApp').controller('EightdotthreePhotosController', EightdotthreePhotosController);
 
-    function EightdotthreeController(Instagram, $routeParams) {
+    function EightdotthreePhotosController(Instagram, $routeParams) {
 
-        console.group('EightdotthreeController');
+        console.group('EightdotthreePhotosController');
 
         var vm = this;
         var tag = typeof $routeParams.tagName !== 'undefined' ? $routeParams.tagName : '';
@@ -32,7 +32,7 @@
 
     }
 
-    // Object.defineProperty(EightdotthreeController.prototype, 'loadingSpinner', {
+    // Object.defineProperty(EightdotthreePhotosController.prototype, 'loadingSpinner', {
     //     enumerable: true,
     //     configurable: true,
     //     get: function() {
@@ -43,7 +43,7 @@
     //     }
     // });
 
-    // Object.defineProperty(EightdotthreeController.prototype, 'loadMoreBtn', {
+    // Object.defineProperty(EightdotthreePhotosController.prototype, 'loadMoreBtn', {
     //     enumerable: true,
     //     configurable: true,
     //     get: function() {
@@ -54,7 +54,7 @@
     //     }
     // });
 
-    // Object.defineProperty(EightdotthreeController.prototype, 'photos', {
+    // Object.defineProperty(EightdotthreePhotosController.prototype, 'photos', {
     //     enumerable: true,
     //     configurable: true,
     //     get: function() {
@@ -65,7 +65,7 @@
     //     }
     // });
 
-    // Object.defineProperty(EightdotthreeController.prototype, 'loading', {
+    // Object.defineProperty(EightdotthreePhotosController.prototype, 'loading', {
     //     enumerable: true,
     //     configurable: true,
     //     get: function() {

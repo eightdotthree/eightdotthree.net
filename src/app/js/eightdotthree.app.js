@@ -12,12 +12,12 @@
 
 		$routeProvider
 			.when('/', {
-				controller: 'EightdotthreeController',
+				controller: 'EightdotthreePhotosController',
 				controllerAs: 'cont',
 				templateUrl: 'views/photos.html'
 			})
 			.when('/tag/:tagName', {
-				controller: 'EightdotthreeController',
+				controller: 'EightdotthreePhotosController',
 				controllerAs: 'cont',
 				templateUrl: 'views/photos.html'
 			})
