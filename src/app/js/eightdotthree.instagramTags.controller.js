@@ -6,7 +6,15 @@
 
     function InstagramTagsController() {
 
-        console.log('InstagramTagsController');
+        var vm = this;
+        vm.tags = [
+        	'pug',
+        	'dog',
+        	'cat',
+        	'travel',
+        	'beer',
+        	'pittsburgh'
+        ];
 
     }
 

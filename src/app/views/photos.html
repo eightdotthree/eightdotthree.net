@@ -1,18 +1,22 @@
-<ul class="clearfix">
-	<li data-ng-repeat="p in cont.photos">
-		<a href="{{ p.link }}" title="See this on Instagram" target="_blank" class="photo-item photo-item-link">
-			<div class="photo-item-details">
-				<h2 data-ng-bind="p.caption.text | escapeHtml" data-ng-hide="p.caption.text == undefined"></h2>
-			</div>
-			<img src="img/unveilPlaceholder.gif" data-unveil-src="{{ p.images.standard_resolution.url }}" title="{{ p.caption.text }}" class="photo-item-img unveil" width="640" height="640" />
-		</a>
-	</li>
-</ul>
+<div class="row">
 
-<div id="js-loading-spinner" class="loading-spinner" data-ng-show="cont.loading">
-	<img src="/img/loadingSpinner.gif" width="32" height="32" alt="Loading..." />
+	<ul class="photo-item-list clearfix">
+		<li data-ng-repeat="photo in cont.photos">
+			<a href="{{ photo.link }}" title="See this on Instagram" target="_blank" class="photo-item photo-item-link">
+				<div class="photo-item-details">
+					<h2 data-ng-bind="photo.caption.text | escapeHtml" data-ng-hide="photo.caption.text == undefined"></h2>
+				</div>
+				<img src="img/unveilPlaceholder.gif" data-unveil-src="{{ photo.images.standard_resolution.url }}" title="{{ photo.caption.text }}" class="photo-item-img unveil" width="640" height="640" />
+			</a>
+		</li>
+	</ul>
+
+	<div id="js-loading-spinner" class="loading-spinner" data-ng-show="cont.loading">
+		<img src="/img/loadingSpinner.gif" width="32" height="32" alt="Loading..." />
+	</div>
+
+	<a id="js-load-more-btn" class="load-more-btn" data-ng-hide="cont.loading" data-ng-click="cont.getNextPage()">
+		Load More
+	</a>
+
 </div>
-
-<a id="js-load-more-btn" class="load-more-btn" data-ng-hide="cont.loading" data-ng-click="cont.getNextPage()">
-	Load More
-</a>

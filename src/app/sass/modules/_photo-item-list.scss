@@ -1,34 +1,7 @@
 .photo-item-list {
 
 	list-style-type: none;
-
-	.photo-item {
-		width: 100%;
-		float: left;
-	}
-
-	@include bp (small) {
-
-		.photo-item {
-			width: 50%;
-		}
-
-	}
-
-	@include bp (medium) {
-
-		.photo-item {
-			width: 33.3%;
-		}
-
-	}
-
-	@include bp (large) {
-
-		.photo-item {
-			width: 25%;
-		}
-
-	}
+	padding: 0;
+	margin: 0;
 
 }

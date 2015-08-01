@@ -1,0 +1,9 @@
+.navbar {
+	.navbar-toggle {
+
+		@include bp(large) {
+			display: block;
+		}
+
+	}
+}
