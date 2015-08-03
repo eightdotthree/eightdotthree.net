@@ -1,9 +1,35 @@
 .navbar {
+
+	border: none;
+
+	padding-top: 20px;
+	margin: 0;
+    width: 100%;
+
+    position: fixed;
+    top: 0;
+
 	.navbar-toggle {
 
-		@include bp(large) {
+		@include bp(medium) {
 			display: block;
 		}
 
 	}
+
+	&.navbar-off-screen {
+		top: -70px;
+	}
+
+	&.navbar-short {
+
+		transition-property: all;
+		transition-duration: 0.5s;
+		transition-timing-function: ease-out;
+
+		top: 0;
+		padding-top: 0;
+		z-index: 1000;
+	}
+
 }
