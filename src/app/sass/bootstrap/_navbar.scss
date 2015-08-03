@@ -44,4 +44,8 @@ $navbar-zindex-default: 1;
 		z-index: 1000;
 	}
 
+	.no-js & {
+		display: none;
+	}
+
 }

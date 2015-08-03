@@ -21,6 +21,9 @@
 				controllerAs: 'cont',
 				templateUrl: 'views/photos.html'
 			})
+			.when('/about', {
+				templateUrl: 'views/about.html'
+			})
 			.otherwise({
 				redirectTo: '/'
 			});
