@@ -9,9 +9,12 @@
     		link: function (scope, element, attrs) {
 
           var SHORT_NAVBAR_SCROLL_HEIGHT = 800;
+          var SCROLLING_UP = 'up';
+          var SCROLLING_DOWN = 'down';
 
           var navbar = document.getElementById(attrs.id);
           var navbarHeight = navbar.offsetHeight;
+          var navbarState = SCROLLING_UP;
 
     			$timeout(function() {
 
@@ -19,18 +22,32 @@
 
               var scrollTop = document.body.scrollTop;
 
-              if (scrollTop > navbarHeight) {
-                navbar.classList.add('navbar-off-screen');
-              } else if (scrollTop > SHORT_NAVBAR_SCROLL_HEIGHT) {
-                navbar.classList.remove('navbar-off-screen');
-              } else if (scrollTop < navbarHeight + 20) {
-                navbar.classList.remove('navbar-off-screen');
+              if (scrollTop <= navbarHeight - navbarHeight / 2  && navbarState === SCROLLING_DOWN) {
+                navbarState = SCROLLING_UP;
+                navbar.classList.remove('navbar-off-screen-up');
+                navbar.classList.remove('navbar-off-screen-down');
+                navbar.classList.remove('navbar-short');
               }
+
+              // when the photos view is covering the navbar
+              if (scrollTop > navbarHeight + navbarHeight * 2 && navbarState === SCROLLING_UP) {
+                navbar.classList.add('navbar-off-screen-up');
+              }
+
+              // once the photos view is covering the navbar, position offscreen for the transition
+              // if (scrollTop > navbarHeight && navbarState === SCROLLING_DOWN) {
+              //   navbar.classList.add('navbar-off-screen-down');
+              // }
+
+              // when the photos are about to uncover the photos view
+              // if (scrollTop < navbarHeight + 10 && navbarState === SCROLLING_DOWN) {
+              //   navbar.classList.remove('navbar-off-screen-up');
+              //   navbar.classList.remove('navbar-off-screen-down');
+              // }
 
               if (scrollTop > SHORT_NAVBAR_SCROLL_HEIGHT) {
                 navbar.classList.add('navbar-short');
-              } else {
-                navbar.classList.remove('navbar-short');
+                navbarState = SCROLLING_DOWN;
               }
 
             }, this));
