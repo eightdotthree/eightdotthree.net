@@ -1,13 +1,14 @@
-@import "color-palette/color.scss";
-
 $fontsize: 16;
 $default-fontsize: $fontsize;
 
 //Basics
-$white: #fff8f2;
+$white: #f4f4f3;
 $black: #160e06;
 $red: #ec2327;
 
 $link-color: $red;
 
-$sans-serif: 'Roboto', sans-serif;
+// fonts
+$roboto: 'Roboto', sans-serif;
+
+$sans-serif: $roboto, sans-serif;

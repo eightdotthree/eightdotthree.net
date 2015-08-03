@@ -1,0 +1,24 @@
+.navmenu-offcanvas {
+
+    background-color: $white;
+
+    padding: 20px 10px 20px 20px;
+    display: none;
+
+    hr {
+        border-top-color: $gray-base;
+    }
+
+    .padding-offset {
+        padding: 1px 5px;
+    }
+
+    .tags-description {
+    	font-size: 25px;
+    	font-weight: 300;
+    }
+
+    &.in {
+    	display: block;
+    }
+}

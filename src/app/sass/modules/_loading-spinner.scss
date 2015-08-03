@@ -4,15 +4,15 @@
 	transition-duration: 0.5s;
 
 	text-align: center;
-	opacity: 0;
+	// opacity: 0;
 
 	margin: 1em 0;
 
-	display: none;
+	// display: none;
 
 	&.is-loading {
 		padding: 2em;
-		opacity: 1;
-		display: block;
+		// opacity: 1;
+		// display: block;
 	}
 }

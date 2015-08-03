@@ -1,0 +1,51 @@
+$navbar-transition-props: top 0.35s, left 0.35s, right 0.35s, padding 0.35s;
+$navbar-zindex-default: 1;
+.navbar {
+
+	transition: $navbar-transition-props;
+
+	border: none;
+
+	padding-top: 20px;
+	margin: 0;
+    width: 100%;
+
+    position: fixed;
+    top: 0;
+    z-index: $navbar-zindex-default;
+
+	.navbar-toggle {
+		@include bp(medium) {
+			display: block;
+		}
+	}
+
+	&.navbar-off-screen-up,
+	&.navbar-off-screen-down {
+		padding-top: 0;
+	}
+
+	&.navbar-off-screen-up {
+		top: -70px;
+		z-index: 1000;
+		transition: none;
+	}
+
+	&.navbar-off-screen-down {
+		top: 0;
+		transition: $navbar-transition-props;
+		// z-index: $navbar-zindex-default;
+	}
+
+	&.navbar-short {
+		transition: $navbar-transition-props;
+		top: 0;
+		padding-top: 0;
+		z-index: 1000;
+	}
+
+	.no-js & {
+		display: none;
+	}
+
+}
