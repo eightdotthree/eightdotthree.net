@@ -4,31 +4,29 @@
 
     angular.module('eightdotthreeApp').controller('EightdotthreePhotosController', EightdotthreePhotosController);
 
-    function EightdotthreePhotosController(Instagram, $routeParams) {
+    function EightdotthreePhotosController(photos, Instagram) {
 
         console.group('EightdotthreePhotosController');
 
         var vm = this;
-        vm.loading = true;
+        vm.photos = photos;
 
-        var tag = typeof $routeParams.tagName !== 'undefined' ? $routeParams.tagName : '';
+        // var tag = typeof $routeParams.tagName !== 'undefined' ? $routeParams.tagName : '';
 
-        function photosLoaded(photos) {
-            vm.loading = false;
-            vm.photos = photos;
-        }
+        // function photosLoaded(photos) {
+        //     vm.loading = false;
+        //     vm.photos = photos;
+        // }
 
-        vm.getNextPage = function() {
-            vm.loading = true;
-            Instagram.getNextPage().then(photosLoaded);
-        };
+        // vm.getNextPage = function() {
+        //     vm.loading = true;
+        //     Instagram.getNextPage().then(photosLoaded);
+        // };
 
-        vm.getFirstPage = function() {
-            vm.loading = true;
-            Instagram.getFirstPage(tag).then(photosLoaded);
-        };
-
-        vm.getFirstPage();
+        // vm.getFirstPage = function() {
+        //     vm.loading = true;
+        //     Instagram.getFirstPage(tag).then(photosLoaded);
+        // };
 
         console.groupEnd();
 
@@ -42,39 +40,6 @@
     //     },
     //     set: function(val) {
     //         this._loadingSpinner = val;
-    //     }
-    // });
-
-    // Object.defineProperty(EightdotthreePhotosController.prototype, 'loadMoreBtn', {
-    //     enumerable: true,
-    //     configurable: true,
-    //     get: function() {
-    //         return this._loadMoreBtn;
-    //     },
-    //     set: function(val) {
-    //         this._loadMoreBtn = val;
-    //     }
-    // });
-
-    // Object.defineProperty(EightdotthreePhotosController.prototype, 'photos', {
-    //     enumerable: true,
-    //     configurable: true,
-    //     get: function() {
-    //         return this._photos;
-    //     },
-    //     set: function(val) {
-    //         this._photos = val;
-    //     }
-    // });
-
-    // Object.defineProperty(EightdotthreePhotosController.prototype, 'loading', {
-    //     enumerable: true,
-    //     configurable: true,
-    //     get: function() {
-    //         return this._loading;
-    //     },
-    //     set: function(val) {
-    //         this._loading = val;
     //     }
     // });
 

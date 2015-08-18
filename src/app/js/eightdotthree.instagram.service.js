@@ -111,6 +111,10 @@
 
 			console.group('Instagram.getFirstPage');
 
+			// var tag = typeof $routeParams.tagName !== 'undefined' ? $routeParams.tagName : '';
+
+console.log('tag ' + tag)
+
 			havePhoto = [];
 			photos = [];
 			nextPageUrl = '';

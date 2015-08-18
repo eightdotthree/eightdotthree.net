@@ -3,30 +3,46 @@
 	'use strict';
 
 	angular.module('eightdotthreeApp', [
-		'ngRoute'
+		'ui.router'
 	]);
 
-	angular.module('eightdotthreeApp').config(['$routeProvider', Routes]);
+	angular.module('eightdotthreeApp').config(Routes);
 
-	function Routes($routeProvider) {
+	function Routes($stateProvider, $urlRouterProvider) {
 
-		$routeProvider
-			.when('/', {
-				controller: 'EightdotthreePhotosController',
-				controllerAs: 'cont',
-				templateUrl: 'views/photos.html'
-			})
-			.when('/tag/:tagName', {
-				controller: 'EightdotthreePhotosController',
-				controllerAs: 'cont',
-				templateUrl: 'views/photos.html'
-			})
-			.when('/about', {
-				templateUrl: 'views/about.html'
-			})
-			.otherwise({
-				redirectTo: '/'
-			});
+		$urlRouterProvider.otherwise('/');
+
+		// home / default
+		$stateProvider.state('home', {
+			url: '/',
+			templateUrl: 'views/photos.html',
+			controller: 'EightdotthreePhotosController',
+			controllerAs: 'cont',
+			resolve: {
+				photos: function(Instagram) {
+					return Instagram.getFirstPage('');
+				}
+			}
+		});
+
+		// tag/:tagName
+		$stateProvider.state('tag', {
+			url: '/tag/:tagName',
+			templateUrl: 'views/photos.html',
+			controller: 'EightdotthreePhotosController',
+			controllerAs: 'cont',
+			resolve: {
+				photos: function(Instagram, $stateParams) {
+					return Instagram.getFirstPage($stateParams.tagName);
+				}
+			}
+		});
+
+		// about
+		$stateProvider.state('about', {
+			url: '/about',
+			templateUrl: 'views/about.html'
+		});
 
 	}
 

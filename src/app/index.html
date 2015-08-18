@@ -45,10 +45,14 @@
 
 			</nav>
 
-			<section class="container-photos container-fluid" data-ng-view>
+			<section class="container-photos container-fluid" data-ui-view>
+
+				<div id="js-loading-spinner" class="loading-spinner" data-loading>
+					<img src="/img/loadingSpinner.gif" width="32" height="32" alt="Loading..." />
+				</div>
 
 				<noscript>
-	    		<div class="intro-content">
+	    			<div class="intro-content">
 						<h1>About Me</h1>
 						<p>
 							Hi, I am Ryan. I enjoy traveling, riding bikes, amusement parks, home brewing, and teaching <a href="//www.facebook.com/penelopepugdog">Penelope pug</a> the difference between good and evil. This is my website. You can also find me on <a href="//twitter.com/8dot3" title="Find me on Twitter">Twitter</a>, <a href="//instagram.com/8dot3/" title="Find me on Instagram">Instagram</a>, and <a href="//linkedin.com/ryansprake" title="Find me on LinkedIn">LinkedIn</a>.
@@ -105,7 +109,8 @@
 
 		<!-- angular -->
 		<script src="bower_components/angular/angular.js"></script>
-		<script src="bower_components/angular-route/angular-route.js"></script>
+		<!--<script src="bower_components/angular-route/angular-route.js"></script>-->
+		<script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
 
 		<!-- bootstrap -->
 		<script src="bower_components/bootstrap-sass/assets/javascripts/bootstrap.js"></script>
@@ -118,7 +123,10 @@
 		<script src="js/eightdotthree.instagram.service.js"></script>
 		<script src="js/eightdotthree.unveil.directive.js"></script>
 		<script src="js/eightdotthree.navbar.directive.js"></script>
+
 		<script src="js/filters/eightdotthree.escapeHtml.js"></script>
+		<script src="js/directives/loading.directive.js"></script>
+
 
 		<!-- endbuild -->
 
