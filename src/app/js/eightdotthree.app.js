@@ -10,11 +10,9 @@
 
 	function Routes($stateProvider, $urlRouterProvider) {
 
-		$urlRouterProvider.otherwise('/media');
-
 		// media
 		$stateProvider.state('media', {
-			url: '/media',
+			url: '/media/recent',
 			templateUrl: 'views/media.html',
 			controller: 'EightdotthreePhotosController',
 			controllerAs: 'cont',
@@ -25,6 +23,16 @@
 			}
 		});
 
+		// media/detail/:id
+		$stateProvider.state('media.detail', {
+			url: '/detail/:id',
+			templateUrl: 'views/media.detail.html',
+			controller: function($scope) {
+				// $scope.items = ["A", "List", "Of", "Items"];
+				console.log('test');
+	      	}
+		});
+
 		// media/tag/:tagName
 		$stateProvider.state('tag', {
 			url: '/media/tag/:tagName',
@@ -33,20 +41,8 @@
 			controllerAs: 'cont',
 			resolve: {
 				photos: function(Instagram, $stateParams) {
+					console.log('resolve');
 					return Instagram.getFirstPage($stateParams.tagName);
-				}
-			}
-		});
-
-		// media/detail/:id
-		$stateProvider.state('detail', {
-			url: '/media/detail/:id',
-			templateUrl: 'views/media.html',
-			controller: 'EightdotthreePhotosController',
-			controllerAs: 'cont',
-			resolve: {
-				detail: function(Instagram, $stateParams) {
-					return Instagram.getDetail($stateParams.id);
 				}
 			}
 		});
@@ -56,6 +52,8 @@
 			url: '/about',
 			templateUrl: 'views/about.html'
 		});
+
+		$urlRouterProvider.otherwise('/media/recent');
 
 	}
 
