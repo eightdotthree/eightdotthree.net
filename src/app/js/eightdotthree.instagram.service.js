@@ -111,10 +111,6 @@
 
 			console.group('Instagram.getFirstPage');
 
-			// var tag = typeof $routeParams.tagName !== 'undefined' ? $routeParams.tagName : '';
-
-console.log('tag ' + tag)
-
 			havePhoto = [];
 			photos = [];
 			nextPageUrl = '';
@@ -169,9 +165,28 @@ console.log('tag ' + tag)
 
         }
 
+
+        /**
+         * Gets the detail of a media item
+         */
+        function _getDetail(id) {
+
+        	console.group('getDetail ' + id);
+
+        	var endpoint;
+			var deferred = $q.defer();
+			var promise = deferred.promise;
+
+			return promise;
+
+        	console.groupEnd();
+
+        }
+
         return {
         	getFirstPage: getFirstPage,
         	getNextPage: getNextPage,
+        	getDetail: _getDetail,
         	photos: photos,
         	hashtags: hashtags
         };
