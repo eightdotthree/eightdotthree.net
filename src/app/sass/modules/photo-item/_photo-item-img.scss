@@ -3,10 +3,13 @@
 	border: 0.25em solid transparent;
 	width: 100%;
 	height: auto;
-	opacity: 0;
 
 	@include transition-property(opacity);
 	@include transition-duration(1s);
+
+	&.unveil {
+		opacity: 0;
+	}
 
 	&.unveiled {
 		opacity: 1;

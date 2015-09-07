@@ -9,7 +9,7 @@
         console.group('EightdotthreeMediaDetailController');
 
         var vm = this;
-        vm.photos = photos;
+        // vm.photos = photos;
 
         // var tag = typeof $routeParams.tagName !== 'undefined' ? $routeParams.tagName : '';
 

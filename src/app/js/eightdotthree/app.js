@@ -26,10 +26,7 @@
 		// media/detail/:id
 		$stateProvider.state('media.detail', {
 			url: '/detail/:id',
-			templateUrl: 'views/media.detail.html',
-			controller: function($scope) {
-				// $scope.items = ["A", "List", "Of", "Items"];
-	      	}
+			templateUrl: 'views/media.detail.html'
 		});
 
 		// media/tag/:tagName

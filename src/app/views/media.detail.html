@@ -1,12 +1,39 @@
 <div id="js-media-detail" class="media-detail modal fade">
-	<div class="modal-dialog" role="document">
+
+	<div class="modal-dialog modal-lg" role="document">
     	<div class="modal-content">
+
+    		<div class="modal-header">
+        		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        			<span aria-hidden="true">&times;</span>
+        		</button>
+        		<h4 class="modal-title">
+        			{{ mediaDetail.data.caption.text }}
+    			</h4>
+  			</div>
+
     		<div class="modal-body">
-	    		<h1>Detail</h1>
-				<p>
-					Hi, I am Ryan. I enjoy traveling, riding bikes, amusement parks, home brewing, and teaching <a href="//www.facebook.com/penelopepugdog">Penelope pug</a> the difference between good and evil. This is my website. You can also find me on <a href="//twitter.com/8dot3" title="Find me on Twitter">Twitter</a>, <a href="//instagram.com/8dot3/" title="Find me on Instagram">Instagram</a>, and <a href="//linkedin.com/ryansprake" title="Find me on LinkedIn">LinkedIn</a>.
-				</p>
+
+    			<div class="row">
+
+					<div class="col-md-6">
+						<img data-ng-src="{{ mediaDetail.data.images.standard_resolution.url }}" title="{{ mediaDetail.data.caption.text }}" class="photo-item-img" width="640" height="640" />
+					</div>
+
+					<div class="col-md-6">
+						Hi, I am Ryan. I enjoy traveling, riding bikes, amusement parks, home brewing, and teaching <a href="//www.facebook.com/penelopepugdog">Penelope pug</a> the difference between good and evil. This is my website. You can also find me on <a href="//twitter.com/8dot3" title="Find me on Twitter">Twitter</a>, <a href="//instagram.com/8dot3/" title="Find me on Instagram">Instagram</a>, and <a href="//linkedin.com/ryansprake" title="Find me on LinkedIn">LinkedIn</a>.
+					</div>
+
+				</div>
+
 			</div>
+
+			<div class="modal-footer">
+        		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        		<button type="button" class="btn btn-primary">Save changes</button>
+      		</div>
+
     	</div>
 	</div>
+
 </div>

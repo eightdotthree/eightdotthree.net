@@ -23,7 +23,7 @@
 
 		var whose = MINE; // keep track of whose photos we're viewing
 
-		var photos = [];
+		var _media = [];
 		var hashtags = [];
         var havePhoto = [];
         var haveTag = [];
@@ -32,7 +32,7 @@
 		/**
 		 * Builds the Instagram API endpoint
 		 */
-		function buildEndpoint(func, params) {
+		function _buildEndpoint(func, params) {
 
 			var endpoint;
 
@@ -57,9 +57,9 @@
 		/**
 		 * call the API with the supplied endpoint
 		 */
-		function get(endpoint, deferred) {
+		function _get(endpoint, deferred) {
 
-			console.group('Instagram.get');
+			console.group('Instagram._get');
 			console.info(endpoint);
 			console.groupEnd();
 
@@ -74,7 +74,7 @@
 	                	var data = responseData[i];
 
 	                    if (typeof havePhoto[data.id] === 'undefined') {
-	                    	photos.push(data);
+	                    	_media.push(data);
 	                        havePhoto[data.id] = '1';
 	                    }
 
@@ -98,7 +98,7 @@
 
 	            }
 
-	            deferred.resolve(photos);
+	            deferred.resolve(_media);
 
 	        });
 
@@ -107,12 +107,12 @@
 		/**
 		 * Gets the first page of the current endpoint
 		 */
-		function getFirstPage(tag) {
+		function _getFirstPage(tag) {
 
-			console.group('Instagram.getFirstPage');
+			console.group('Instagram._getFirstPage');
 
 			havePhoto = [];
-			photos = [];
+			_media = [];
 			nextPageUrl = '';
 
 			if (tag !== '') {
@@ -126,15 +126,15 @@
 			var promise = deferred.promise;
 
             if (tag !== '') {
-                endpoint = buildEndpoint('/tags/tag-name/media/recent/', { tag: tag });
+                endpoint = _buildEndpoint('/tags/tag-name/media/recent/', { tag: tag });
             } else {
-                endpoint = buildEndpoint('/users/media/recent/');
+                endpoint = _buildEndpoint('/users/media/recent/');
             }
 
             console.info('endpoint: ' + endpoint);
             console.groupEnd();
 
-            get(endpoint, deferred);
+            _get(endpoint, deferred);
 
             return promise;
 
@@ -143,7 +143,7 @@
 		/**
 		 * Gets the next page of the current endpoint
 		 */
-		function getNextPage() {
+		function _getNextPage() {
 
 			console.group('Instagram.getNextPage');
 			console.log('nextPageUrl: ' + nextPageUrl);
@@ -154,7 +154,7 @@
 			var endpoint;
 
             if (nextPageUrl !== '') {
-                endpoint = buildEndpoint(nextPageUrl);
+                endpoint = _buildEndpoint(nextPageUrl);
                 get(endpoint, deferred);
             }
 
@@ -166,28 +166,58 @@
         }
 
 
-        /**
-         * Gets the detail of a media item
+        /** 
+         * Searches the _media array and returns the object if it exists
          */
-        function _getDetail(id) {
+        function _returnMedia(id) {
 
-        	console.group('getDetail ' + id);
+        	console.group('_returnMedia: ' + id);
 
-        	var endpoint;
-			var deferred = $q.defer();
-			var promise = deferred.promise;
+        	var media = {};
 
-			return promise;
+        	for (var i = 0; i < _media.length; i++) {
+
+        		var mediaObj = _media[i];
+
+        		if (mediaObj.id === id) {
+        			media = mediaObj;
+        			break;
+        		}
+
+        	}
+
+        	return media;
 
         	console.groupEnd();
 
         }
 
+
+        /**
+         * Gets the detail of a media item
+         */
+        function _getMediaDetail(id) {
+
+        	console.group('Instagram.getMediaDetail ' + id);
+        	
+        	var endpoint;
+			var deferred = $q.defer();
+			var promise = deferred.promise;
+
+			var mediaObject = _returnMedia(id);
+			deferred.resolve(mediaObject);
+
+			console.groupEnd();
+
+			return promise;
+
+        }
+
         return {
-        	getFirstPage: getFirstPage,
-        	getNextPage: getNextPage,
-        	getDetail: _getDetail,
-        	photos: photos,
+        	getFirstPage: _getFirstPage,
+        	getNextPage: _getNextPage,
+        	getMediaDetail: _getMediaDetail,
+        	photos: _media,
         	hashtags: hashtags
         };
 

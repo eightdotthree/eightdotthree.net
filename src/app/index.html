@@ -29,19 +29,19 @@
 
 			<nav id="navbar" class="navbar navbar-inverse">
 
-			  <div class="container">
+			  	<div class="container">
 
-		      <a class="navbar-brand navbar-left" href="#/">
-		      	<span class="brand-eight">::::</span><span class="brand-dot">.</span><span class="brand-three">:.</span>
-		      </a>
+		      		<a class="navbar-brand navbar-left" href="#/">
+		      			<span class="brand-eight">::::</span><span class="brand-dot">.</span><span class="brand-three">:.</span>
+		      		</a>
 
-	      	<button type="button" class="navbar-toggle navbar-right" data-toggle="offcanvas" data-recalc="false" data-target=".navmenu" data-autohide="true" data-disable-scrolling="false" data-canvas="#canvas">
-	        	<span class="icon-bar"></span>
-	        	<span class="icon-bar"></span>
-	        	<span class="icon-bar"></span>
-	      	</button>
+			      	<button type="button" class="navbar-toggle navbar-right" data-toggle="offcanvas" data-recalc="false" data-target=".navmenu" data-autohide="true" data-disable-scrolling="false" data-canvas="#canvas">
+			        	<span class="icon-bar"></span>
+			        	<span class="icon-bar"></span>
+			        	<span class="icon-bar"></span>
+			      	</button>
 
-			  </div>
+				</div>
 
 			</nav>
 
@@ -112,20 +112,31 @@
 		<script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
 
 		<!-- bootstrap -->
-		<script src="bower_components/bootstrap-sass/assets/javascripts/bootstrap.js"></script>
+		<script src="bower_components/bootstrap-sass/assets/javascripts/bootstrap/modal.js"></script>
 		<script src="bower_components/jasny-bootstrap/js/offcanvas.js"></script>
 
-		<!-- eightdotthree -->
-		<script src="js/eightdotthree.app.js"></script>
-		<script src="js/eightdotthree.photos.controller.js"></script>
-		<script src="js/eightdotthree.mediaDetail.directive.js"></script>
-		<!--<script src="js/eightdotthree.mediaDetail.controller.js"></script>-->
-		<script src="js/eightdotthree.hashtags.controller.js"></script>
-		<script src="js/eightdotthree.instagram.service.js"></script>
-		<script src="js/eightdotthree.unveil.directive.js"></script>
-		<script src="js/eightdotthree.navbar.directive.js"></script>
+		<!-- 
+			eightdotthree 
+		-->
+		<script src="js/eightdotthree/app.js"></script>
 
-		<script src="js/filters/eightdotthree.escapeHtml.js"></script>
+		<!-- controllers -->
+		<script src="js/eightdotthree/photos.controller.js"></script>
+		<!--<script src="js/eightdotthree/mediaDetail.controller.js"></script>-->
+		<script src="js/eightdotthree/hashtags.controller.js"></script>
+
+		<!-- services -->
+		<script src="js/eightdotthree/instagram.service.js"></script>
+
+		<!-- directives -->
+		<script src="js/eightdotthree/unveil.directive.js"></script>
+		<script src="js/eightdotthree/navbar.directive.js"></script>
+		<script src="js/eightdotthree/mediaDetail.directive.js"></script>
+
+		<!-- filters -->
+		<script src="js/eightdotthree/filters/escapeHtml.js"></script>
+
+		<!-- 3d party -->
 		<script src="js/directives/loading.directive.js"></script>
 
 		<!-- endbuild -->
