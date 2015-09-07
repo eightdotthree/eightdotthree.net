@@ -2,7 +2,7 @@
 
 	<ul class="photo-item-list clearfix">
 		<li data-ng-repeat="photo in cont.photos">
-			<a href="/#/media/detail/{{ photo.id }}" title="See this on Instagram" class="photo-item photo-item-link">
+			<a href="/#/media/recent/detail/{{ photo.id }}" title="See this on Instagram" class="photo-item photo-item-link">
 				<div class="photo-item-details">
 					<h2 data-ng-bind="photo.caption.text | escapeHtml" data-ng-hide="photo.caption.text == undefined"></h2>
 				</div>

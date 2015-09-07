@@ -11,6 +11,11 @@
         var vm = this;
         vm.photos = photos;
 
+        vm.mediaDetail = function() {
+            console.group('mediaDetail');
+            console.groupEnd();
+        }
+
         // var tag = typeof $routeParams.tagName !== 'undefined' ? $routeParams.tagName : '';
 
         // function photosLoaded(photos) {

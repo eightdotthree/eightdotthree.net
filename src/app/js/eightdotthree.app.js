@@ -29,7 +29,6 @@
 			templateUrl: 'views/media.detail.html',
 			controller: function($scope) {
 				// $scope.items = ["A", "List", "Of", "Items"];
-				console.log('test');
 	      	}
 		});
 
